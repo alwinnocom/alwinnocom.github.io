@@ -1,0 +1,259 @@
+import
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --navbar-blue: hsl(230, 50%, 50%);
+  --closure-red: hsl(0, 100%, 70%);
+}
+
+/* Nature Color Palette (Blue/Green) is probably better than the typical Restaurant Palette (red/yellow) in this case, since people visit Yellowstone for nature and not for food. */
+
+
+/* Navbar */
+nav {
+  background-color: var(--navbar-blue);
+  font-size: 25px;
+
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  max-height: 50px;
+
+  z-index: 5;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
+li:first-of-type {
+  position: absolute;
+  top: 10px;
+  left: 20px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+li:not(first-of-type) {
+  /* position: absolute;
+  top: 10px;
+  right: 10px; */
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 10px;
+}
+
+/* Covid-Notice */
+
+.covid-notice {
+  animation: appear 0.5s ease-in;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+
+  background-color: var(--closure-red);
+  border-style: groove;
+  border-color: none;
+  border-radius: 10px;
+  float: left;
+  font-size: 25px;
+  padding: 20px;
+
+  position: absolute;
+  display: flex;
+  top: 40%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  z-index: 2;
+}
+
+@media (max-width: 768px;) {
+  .covid-close-notice {
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+  }
+}
+
+header strong {
+  color: blue;
+}
+/* Blur Content for Covid Notice */
+
+/* @keyframes appear {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes disappear {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+@keyframes blur {
+  from {
+    filter: blur(0);
+    opacity: 1;
+    background-color: none;
+  }
+  to {
+    filter: blur(15px);
+    opacity: 0.6;
+    background-color: black;
+  }
+}
+
+@keyframes no-blur {
+  from {
+    filter: blur(15px);
+    opacity: 0.6;
+    background-color: black;
+  }
+  to {
+    filter: blur(0);
+    opacity: 1;
+    background-color: none;
+  }
+} */
+
+main {
+  animation: blur 0.5s ease-in;
+  animation-delay: 1s;
+  animation-fill-mode: forwards;
+  height: 100vh;
+  padding: 20px;
+
+  position: relative;
+  top: 50px;
+  display: grid;
+  grid-column-gap: 40px;
+}
+
+main.no-blur {
+  animation: no-blur 0.5s ease-in;
+  animation-fill-mode: forwards;
+}
+
+/* Close Covid Notice Button */
+.covid-close-notice {
+  background-color: var(--closure-red);
+  border: none;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  padding: 20px;
+  z-index: -1;
+}
+
+.covid-close-notice:hover {
+  cursor: pointer;
+}
+
+.covid-notice.disappear {
+  animation: disappear 0.5s ease-in;
+  animation-fill-mode: forwards;
+}
+
+/* Carousel */
+
+.old-faithful {
+  position: relative;
+  top: 50px;
+  left: 20px;
+  width: 30%;
+  height: 50%;
+}
+
+.old-faithful h1 {
+  font-size: 50px;
+}
+
+.old-faithful p {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.carousel {
+  height: 300px;
+}
+/* Menu Cards */
+
+.three-cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  height: 300px;
+}
+
+/* Form */
+form {
+  position: relative;
+  left: 50%;
+  bottom: 109px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20vw;
+  height: 50vh;
+  transform: translateX(-50%);
+}
+
+/* @media (max-width: 1138px) {
+
+} */
+
+form h3 {
+  display: block;
+}
+
+form h3 {
+  top: 10px;
+  text-align: center;
+}
+
+form p {
+  float: left;
+  padding: 10px 0;
+}
+
+form input.success {
+  border-color: green;
+}
+
+form input.error {
+  border-color: red;
+}
+
+
+/* Fictional Disclaimer */
+footer {
+  background-color: tan;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  font-size: 20px;
+  padding: 0 5px 0 10px;
+}
+
+footer strong {
+  color: purple;
+}
