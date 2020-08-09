@@ -6,6 +6,11 @@ import
   box-sizing: border-box;
 }
 
+/* Body had a pre-built margin of 8px that made the main element unaligned. Pre-built properties are difficult to detect unless you use Google Chrome Dev Tools.*/
+body {
+  margin: 0;
+}
+
 :root {
   --navbar-blue: hsl(230, 50%, 50%);
   --closure-red: hsl(0, 100%, 70%);
@@ -15,13 +20,28 @@ import
 
 
 /* Navbar */
+
+.nav-placeholder {
+  opacity: 0;
+  
+  position: fixed;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  max-height: 50px;
+}
+
 nav {
   background-color: var(--navbar-blue);
-  font-size: 25px;
 
   position: fixed;
   display: flex;
   flex-direction: row;
+  justify-content: flex-end;
   align-items: center;
   top: 0;
   left: 0;
@@ -36,25 +56,94 @@ a {
   text-decoration: none;
 }
 
+/* Put the unordered list in a flexbox so the individual li items are lined up. Putting nav as flex will only affect the ul items, not the li items. */
+nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
 li {
   list-style-type: none;
 }
 
 li:first-of-type {
   position: absolute;
+  visibility: visible;
   top: 10px;
-  left: 20px;
-  justify-content: flex-start;
-  align-items: center;
+  left: 10px;
+  padding: 0 15px;
+  font-size: 25px;
 }
 
-li:not(first-of-type) {
-  /* position: absolute;
-  top: 10px;
-  right: 10px; */
-  justify-content: flex-end;
-  align-items: center;
-  padding: 0 10px;
+li:last-of-type {
+  font-size: 20px;
+  margin-right: 20px;
+}
+
+@media (min-width: 641px) {
+
+    li:not(first-of-type) {
+      padding: 0 15px;
+      font-size: 20px;
+    }
+}
+
+@media (max-width: 640px) {
+
+  li:nth-of-type(2){
+    display: none;
+  }
+
+  li:nth-of-type(3), li:nth-of-type(4), li:nth-of-type(5) {
+    font-size: 20px;
+    padding: 10px;
+  }
+
+}
+
+@media (max-width: 540px) {
+
+  li:nth-of-type(2), li:nth-of-type(4) {
+    display: none;
+  }
+  
+  li:nth-of-type(3), li:nth-of-type(5) {
+    font-size: 20px;
+    padding: 10px;
+  }
+
+}
+
+@media (max-width: 440px) {
+
+  li:nth-of-type(2), li:nth-of-type(3), li:nth-of-type(4) {
+    display: none;
+  }
+  
+  li:nth-of-type(5) {
+    font-size: 20px;
+    padding: 10px;
+  }
+
+}
+
+@media (max-width: 340px) {
+
+  li:first-of-type {
+    position: absolute;
+    visibility: visible;
+    top: 10px;
+    left: 10px;
+    padding: 0 15px;
+    font-size: 25px;
+  }
+
+  li:nth-of-type(2), li:nth-of-type(3), li:nth-of-type(4), li:nth-of-type(5) {
+    visibility: hidden;
+  }
+
 }
 
 /* Covid-Notice */
@@ -81,7 +170,7 @@ li:not(first-of-type) {
   z-index: 2;
 }
 
-@media (max-width: 768px;) {
+@media (max-width: 768px) {
   .covid-close-notice {
     top: 50%;
     left: 50%;
@@ -92,6 +181,32 @@ li:not(first-of-type) {
 header strong {
   color: blue;
 }
+
+
+/* Close Covid Notice Button */
+.covid-close-notice {
+  background-color: var(--closure-red);
+  border: none;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 25px;
+  height: 25px;
+  padding: 20px;
+  z-index: -1;
+}
+
+.covid-close-notice:hover {
+  cursor: pointer;
+}
+
+.covid-notice.disappear {
+  animation: disappear 0.5s ease-in;
+  animation-fill-mode: forwards;
+}
+
+
 /* Blur Content for Covid Notice */
 
 /* @keyframes appear {
@@ -130,91 +245,175 @@ header strong {
   }
 } */
 
+
+/* Main Document */
+
 main {
   animation: blur 0.5s ease-in;
   animation-delay: 1s;
   animation-fill-mode: forwards;
-  height: 100vh;
-  padding: 20px;
-
+  max-width: 100vw;
+  height: auto;
+  margin: 50px 0 0 0;
+  padding: 0;
   position: relative;
-  top: 50px;
+  left: 0;
+
   display: grid;
-  grid-column-gap: 40px;
+  grid-auto-rows: auto auto auto auto;
+  grid-row-gap: 40px;
 }
 
 main.no-blur {
   animation: no-blur 0.5s ease-in;
   animation-fill-mode: forwards;
-}
-
-/* Close Covid Notice Button */
-.covid-close-notice {
-  background-color: var(--closure-red);
-  border: none;
-
-  position: absolute;
-  top: 0;
+  max-width: 100vw;
+  margin: 50px 0 0 0;
+  padding: 0;
+  position: relative;
   left: 0;
-  width: 25px;
-  height: 25px;
-  padding: 20px;
-  z-index: -1;
+
+  background-color: green;
+
+  display: grid;
+  grid-auto-rows: auto auto auto auto;
+  grid-row-gap: 40px;
 }
 
-.covid-close-notice:hover {
-  cursor: pointer;
-}
-
-.covid-notice.disappear {
-  animation: disappear 0.5s ease-in;
-  animation-fill-mode: forwards;
-}
 
 /* Carousel */
 
-.old-faithful {
-  position: relative;
-  top: 50px;
-  left: 20px;
-  width: 30%;
-  height: 50%;
-}
-
-.old-faithful h1 {
-  font-size: 50px;
-}
-
-.old-faithful p {
-  font-size: 20px;
-  margin-top: 10px;
-}
-
 .carousel {
-  height: 300px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
+
+.carousel h1, .carousel p {
+  position: relative;
+  left: 25px;
+  height: auto;
+}
+
+.carousel h1 {
+  font-size: 200%;
+  margin: 20px 0 0 0;
+  width: 275px;
+}
+
+.carousel p {
+  font-size: 20px;
+  margin: 10px 0;
+  width: 275px;
+}
+
+
 /* Menu Cards */
 
-.three-cards {
+/* .menu-cards {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  height: 300px;
+  height: auto;
+} */
+
+.menu-cards {
+  height: auto;
+}
+
+.menu-cards div {
+  padding: 0 25px;
+}
+
+@media (min-width: 641px) {
+    .menu-cards {
+      display: grid;
+      grid-template-rows: auto auto;
+      grid-row-gap: 20px;
+
+      grid-template-columns: 33.33% 33.33% 33.33%;
+    }
+}
+
+@media (max-width: 640px) {
+  .menu-cards {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 50% 50%;
+  }
+}
+
+@media (max-width: 440px) {
+  .menu-cards {
+    display: grid;
+    grid-template-rows: auto auto auto auto auto auto;
+  }
+}
+
+
+/* Menu */
+
+#menu {
+  border: solid;
+  border-color: black;
+}
+
+#menu h1 {
+  padding-top: 25px;
+  text-align: center;
+}
+
+#menu div {
+  padding: 20px 0;
+}
+
+#menu p {
+  padding: 0 25px;
+}
+
+@media (min-width: 641px) {
+    #menu div {
+      display: grid;
+      grid-template-rows: auto auto auto auto auto auto auto;
+      grid-template-columns: 50% 50%;
+    }
+}
+
+@media (max-width: 640px) {
+    #menu div {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+    }
+
+    #menu p {
+      margin: 0;
+      text-align: left;
+    }
 }
 
 /* Form */
+
+.form {
+  position: relative;
+  height: auto;
+}
+
 form {
   position: relative;
-  left: 50%;
-  bottom: 109px;
+  /* left: 50%;
+  bottom: 109px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 20vw;
+  height: auto;
+
+  /* width: 20vw;
   height: 50vh;
-  transform: translateX(-50%);
+  transform: translateX(-50%); */
 }
 
 /* @media (max-width: 1138px) {
@@ -226,7 +425,7 @@ form h3 {
 }
 
 form h3 {
-  top: 10px;
+  margin: 10px 0 0 0;
   text-align: center;
 }
 
@@ -243,17 +442,55 @@ form input.error {
   border-color: red;
 }
 
+form sup {
+  color: hsl(230, 56%, 36%);
+  font-weight: bold;
+  font-size: 24px;
+}
+
 
 /* Fictional Disclaimer */
-footer {
+.disclaimer {
   background-color: tan;
   position: fixed;
   bottom: 0;
   left: 0;
   font-size: 20px;
   padding: 0 5px 0 10px;
+  height: auto;
+}
+
+.disclaimer-placeholder {
+  opacity: 0;
+  position: relative;
+  bottom: 0;
+  left: 0;
+  font-size: 20px;
+  padding: 0 5px 0 10px;
+  height: auto;
 }
 
 footer strong {
   color: purple;
+}
+
+footer button {
+  position: absolute;
+  top: -22px;
+  left: 0px;
+  
+  width: 50px;
+  height: 22px;
+
+  background-color: tan;
+  border: none;
+  border-radius: 15px 15px 0 0;
+  color: black;
+  font-family: arial;
+  opacity: 0.7;
+}
+
+footer button:hover {
+  transform: scale(1.1);
+  color: white;
 }

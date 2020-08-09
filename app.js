@@ -1,14 +1,17 @@
 const button = document.querySelector(".covid-close-notice");
 const covidNotice = document.querySelector(".covid-notice");
 const disclaimer = document.querySelector(".disclaimer");
+const disclaimerButton = document.querySelector("footer button");
+const disclaimerPlaceholder = document.querySelector(".disclaimer-placeholder");
+const form = document.getElementById("form");
 const menu = document.getElementById("menu-prices");
 const navbar = document.getElementById("nav");
-const navbarOptions = document.querySelectorAll("nav li:not(.menu)");
+const navbarOptions = document.querySelectorAll("nav li");
 const main = document.getElementById("main");
+
 
 // Remove Covid Notice
 button.addEventListener('click', removeBlurAndCovidNotice);
-menu.addEventListener('click', removeBlurAndCovidNotice);
 
 function removeBlurAndCovidNotice() {
   removeBlur();
@@ -34,6 +37,30 @@ function navbarRemoveCovidNotice() {
 }
 
 navbarRemoveCovidNotice();
+
+
+// Remove Disclaimer
+
+disclaimerButton.addEventListener('click', deleteDisclaimers);
+
+function deleteDisclaimers() {
+  deleteDisclaimer();
+  deletePlaceholderDisclaimer();
+  moveForm();
+}
+
+function deleteDisclaimer() {
+  disclaimer.style.display = "none";
+}
+
+function deletePlaceholderDisclaimer() {
+  disclaimerPlaceholder.style.display = "none";
+}
+
+function moveForm() {
+  form.style.margin = "0 0 20px 0";
+}
+
 
 // Open or Closing Times for restaurant
 
