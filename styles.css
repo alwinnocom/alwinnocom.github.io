@@ -318,6 +318,12 @@ main.no-blur {
   height: auto;
 } */
 
+img {
+  border: solid;
+  width: 400px;
+  height: 400px;
+}
+
 .menu-cards {
   height: auto;
 }
