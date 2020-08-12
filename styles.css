@@ -260,7 +260,7 @@ main {
 
   display: grid;
   grid-auto-rows: auto auto auto auto;
-  grid-row-gap: 70px;
+  grid-row-gap: 50px;
 }
 
 main.no-blur {
@@ -284,12 +284,37 @@ main.no-blur {
   position: relative;
   display: flex;
   flex-direction: column;
+  border-bottom-style: groove;
+  height: 350px;
 }
+
+.carousel img {
+  /* Flip an image - https://css-tricks.com/snippets/css/flip-an-image/ */
+  position: absolute;
+  left: 50%;
+  margin: 0;
+  padding: 0;
+  z-index: -1;
+  height: 350px;
+
+  /* Image by <a href="https://pixabay.com/users/Engin_Akyurt-3656355/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2776824">Engin Akyurt</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2776824">Pixabay</a> */
+}
+
+.carousel img:first-of-type {
+  transform: rotateY(180deg);
+  object-fit: cover;
+  /* rotateZ(90deg) */
+}
+
 
 .carousel h1, .carousel p {
   position: relative;
+  top: 150px;
   left: 25px;
   height: auto;
+
+  color: black;
+  font-weight: 8000;
 }
 
 .carousel h1 {
@@ -314,14 +339,18 @@ main.no-blur {
   bottom: 18px;
 }
 
+/* Pizza Image by <a href="https://pixabay.com/users/ponce_photography-2473530/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1442946">Aline Ponce</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1442946">Pixabay</a> */
 .menu-cards img {
   border: dashed;
+  object-fit: cover;
   width: 400px;
   height: 400px;
 }
 
 .menu-cards {
   height: auto;
+  padding-top: 50px;
+  background-color: hsl(181, 100%, 87%);
 }
 
 .menu-cards div {
@@ -359,6 +388,7 @@ main.no-blur {
 .menu {
   border-style: solid none;
   border-color: var(--navbar-blue);
+  margin-bottom: 25px;
 }
 
 .menu h1 {
@@ -468,11 +498,14 @@ main.no-blur {
 form::before {
   content: '';
   position: absolute;
-  height: 850px;
+  top: 30px;
+  height: 750px;
   width: 500px;
   z-index: 2;
 
-  border: dotted;
+  /* border: dotted; */
+  box-shadow: 0 0 100px black;
+  background-color: none;
   opacity: 0.5;
 }
 
@@ -481,81 +514,104 @@ form::before {
   form::before{
     content: '';
     position: absolute;
-    height: 850px;
-    width: 350px;
+    top: 30px;
+    width: 450px;
     z-index: 2;
-  
-    border: dotted;
-    opacity: 0.5;
+    
+    box-shadow: 0 0 50px black;
   }
   
 }
 
-@media (max-width: 400px) {
+@media (max-width: 530px) {
 
   form::before{
     content: '';
-    border-style: dotted none;
+    position: absolute;
+    width: 350px;
+    z-index: 2;
+    
+    box-shadow: 0 0 50px black;
   }
   
 }
 
 
-/* Form */
+/* Actual Form */
 form {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: auto;
+  height: 850px;
+  margin-bottom: 0;
 }
 
 
-form h3 {
+form h2 {
   display: block;
-}
-
-form h3 {
-  margin: 10px 0 0 0;
   text-align: center;
+
+  position: relative;
+  font-size: 40px;
+  top: 30px;
+  padding: 0;
 }
 
 form p {
   position: relative;
-  top: 20px;
   padding: 10px 0;
+}
+
+
+form p:first-of-type, form p:nth-of-type(2) {
+  right: 126px;
+}
+
+form p:nth-of-type(3) {
+  right: 103px;
+  bottom: 50px;
+}
+
+form p:last-of-type {
+  right: 118px;
+  bottom: 80px;
+}
+
+form p:nth-of-type(2) {
+  bottom: 30px;
 }
 
 
 /* Form inputs */
 
-@media (min-width: 641px) {
-    form input, form textarea {
-      width: 30%;
-    }
-}
-
-@media (max-width: 640px) {
-    form input, form textarea {
-      width: 50%;
-    }
-}
-
-form input::before {
-  content: 'Okay';
-  /* position: relative;
-  right: -100px; */
-  background-color: yellow;
-}
-
 form input {
   min-height: 30px;
   max-height: 60px;
+  width: 300px;
   padding: 0;
+
+  position: relative;
+  bottom: 50px;
+}
+
+form input:first-of-type {
+  bottom: 20px;
+}
+
+form input:nth-of-type(2) {
+  bottom: 50px;
+}
+
+form input:nth-of-type(3) {
+  bottom: 70px;
 }
 
 form textarea {
+  position: relative;
+  bottom: 100px;
+  width: 300px;
   height: 300px;
 }
 
@@ -579,6 +635,8 @@ form button {
   border-radius: 50px;
   border: solid;
   font-weight: 8000;
+  position: relative;
+  bottom: 100px;
 }
 
 form sup {
@@ -595,9 +653,12 @@ form sup {
   bottom: 0;
   left: 0;
   font-size: 20px;
+
+  margin: 0;
   padding: 0 5px 0 10px;
   height: auto;
   z-index: 3;
+  
 }
 
 .disclaimer-placeholder {
@@ -606,6 +667,8 @@ form sup {
   bottom: 0;
   left: 0;
   font-size: 20px;
+
+  margin: 0;
   padding: 0 5px 0 10px;
   height: auto;
   z-index: 3;
