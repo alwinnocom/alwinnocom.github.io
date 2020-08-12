@@ -13,8 +13,8 @@
             <li><a href="#home">Deluge Delights</a></li>
             <li><a href="#home">Home</a></li>
             <li id="menu-prices"><a href=#menu>Menu</a></li>
-            <li><a href="discounts">Discounts</a></li>
-            <li><a href="#contact">Contact Us</a></li>
+            <li><a href="#menu">Prices</a></li>
+            <li><a href="#form">Contact Us</a></li>
           </ul>
         </nav>
         
@@ -34,10 +34,12 @@
             <div class="carousel">
                 <h1>From Old Faithful to your table.</h1>
                 <p>Enjoy the finest culinary masterpieces at Yellowstone National Park.</p>
+                <img src="tomato.jpg" alt="There should be a tomato here."></img>
             </div>
-
-            <div class="menu-cards">
-                  <div class="">
+            
+            <!-- Menu Cards -->
+            <div id="menu-cards">
+                  <!-- <div class="">
                     Gyro Geysers
                   </div>
                   <div class="">
@@ -54,14 +56,17 @@
                   </div>
                   <div class="">
                     6
-                  </div>
+                  </div> -->
             </div>
             
+            <!-- Menu -->
             <div id="menu">
+              
+                
 
-                <h1>Menu</h1>
+                <!-- <h1>Menu</h1> -->
 
-                <div class="">
+                <!-- <div class="">
                       <p>Gyro Geysers</p>
                       <p>Nutritional value topped with choice condiments and the chef's choice of edible goods.</p>
                 </div>
@@ -92,29 +97,31 @@
                  <div>
                   <p>Beverages</p>
                   <p>Coke, Diet Coke, Pepsi, Diet Pepsi, Milk, Chocolate Milk, Apple Juice, Orange Juice, Tea</p>
-                 </div>
+                 </div> -->
 
             </div>
 
+
+            <!-- Form -->
             <form id="form" action="index.html" method="post">
-                    <h3>Contact Us</h3>
+                    <h2>Contact Us</h2>
                       <p>Name<sup>*</sup></p>
-                        <input type="text" name="" value="">
+                        <input placeholder=" John Doe" type="text" name="" value=""></input>
                       <p>Email<sup>*</sup></p>
-                        <input type="text" name="" value="">
+                        <input placeholder=" email@gmail.com" type="text" name="" value="">
                       <p>Phone Number</p>
-                        <input type="text" name="" value="">
+                        <input placeholder=" 123-456-7890" type="text" name="" value="">
                       <p>Message<sup>*</sup></p>
-                        <input type="text" name="" value="">
+                        <textarea spellcheck="true"></textarea>
+                    <button type="button">Submit</button>
             </form>
-            
-      
-            
-            <footer class="disclaimer-placeholder">
-                      <p><strong>Note: </strong>This is <em>not</em> an actual restaurant. This website only exists so the owner can experiment with Cascading Style Sheets (CSS). Please do not contact Yellowstone National Park about Deluge Delights or any other fictional restaurants you may encounter in the wild. Thank you.</p>
-            </footer>
 
       </main>
+
+      <!-- Disclaimer-Placeholder -->
+      <footer class="disclaimer-placeholder">
+        <p><strong>Note: </strong>This is <em>not</em> an actual restaurant. This website only exists so the owner can experiment with Cascading Style Sheets (CSS). Please do not contact Yellowstone National Park about Deluge Delights or any other fictional restaurants you may encounter in the wild. Thank you.</p>
+      </footer>
 
       <footer class="disclaimer">
         <button>X</button>
@@ -122,6 +129,6 @@
       </footer>
       
 
-      <script src="app.js" charset="utf-8"></script>
-  </body>
+      <script src="index.js" charset="utf-8"></script>
+    </body>
 </html>
