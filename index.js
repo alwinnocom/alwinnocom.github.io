@@ -1,10 +1,10 @@
 // React
 import React from "react";
 import ReactDOM from "react-dom";
-import Menu_cards from "./components/Menu_cards";
+import MenuCards from "./components/MenuCards";
 import Menu from "./components/Menu";
 
-ReactDOM.render(<Menu_cards />, document.getElementById("menu-cards"));
+ReactDOM.render(<MenuCards />, document.getElementById("menu-cards"));
 ReactDOM.render(<Menu />, document.getElementById("menu"));
 
 
@@ -15,9 +15,9 @@ const disclaimer = document.querySelector(".disclaimer");
 const disclaimerButton = document.querySelector("footer button");
 const disclaimerPlaceholder = document.querySelector(".disclaimer-placeholder");
 const form = document.getElementById("form");
-const menu = document.getElementById("menu-prices");
-const navbar = document.getElementById("nav");
-const navbarOptions = document.querySelectorAll("nav li");
+// const menu = document.getElementById("menu-prices");
+// const navbar = document.getElementById("nav");
+// const navbarOptions = document.querySelectorAll("nav li");
 const main = document.getElementById("main");
 
 
@@ -61,16 +61,5 @@ function deletePlaceholderDisclaimer() {
 }
 
 function moveForm() {
-  form.style.margin = "0 0 20px 0";
+  form.style.margin = "0 0 0 0";
 }
-
-
-// Open or Closing Times for restaurant
-
-// switch (expression) {
-//   case expression:
-//
-//     break;
-//   default:
-//
-// }

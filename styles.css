@@ -260,7 +260,7 @@ main {
 
   display: grid;
   grid-auto-rows: auto auto auto auto;
-  grid-row-gap: 50px;
+  /* grid-row-gap: 50px; */
 }
 
 main.no-blur {
@@ -274,61 +274,88 @@ main.no-blur {
 
   display: grid;
   grid-auto-rows: auto auto auto auto;
-  grid-row-gap: 40px;
+  /* grid-row-gap: 50px; */
 }
 
 
 /* Carousel */
 
 .carousel {
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+
+  background-color: hsl(181, 100%, 97%)
+  
+  border-bottom-style: groove;
+}
+
+.carousel-text {
   position: relative;
   display: flex;
   flex-direction: column;
-  border-bottom-style: groove;
   height: 350px;
-}
-
-.carousel img {
-  /* Flip an image - https://css-tricks.com/snippets/css/flip-an-image/ */
-  position: absolute;
-  left: 50%;
-  margin: 0;
-  padding: 0;
-  z-index: -1;
-  height: 350px;
-
-  /* Image by <a href="https://pixabay.com/users/Engin_Akyurt-3656355/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2776824">Engin Akyurt</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2776824">Pixabay</a> */
 }
 
 .carousel img:first-of-type {
+  position: relative;
+  left: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.carousel img:last-of-type {
+  /* Flip an image - https://css-tricks.com/snippets/css/flip-an-image/ */
+  position: relative;
+  right: 0;
+  margin: 0;
+  padding: 0;
+  z-index: 1;
+  height: 350px;
+
+  /* Image by <a href="https://pixabay.com/users/Engin_Akyurt-3656355/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2776824">Engin Akyurt</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2776824">Pixabay</a> */
   transform: rotateY(180deg);
   object-fit: cover;
   /* rotateZ(90deg) */
 }
 
 
-.carousel h1, .carousel p {
+.carousel h1, .carousel p, .carousel button {
   position: relative;
-  top: 150px;
-  left: 25px;
+  top: 50px;
+  left: 55px;
   height: auto;
 
   color: black;
   font-weight: 8000;
+  z-index: 2;
 }
 
 .carousel h1 {
-  font-size: 200%;
+  font-size: 250%;
   margin: 20px 0 0 0;
-  width: 275px;
+  width: 325px;
 }
 
 .carousel p {
-  font-size: 20px;
+  font-size: 150%;
   margin: 10px 0;
   width: 275px;
 }
 
+.carousel button {
+  margin: 0 20px 0 0;
+  padding: 5px 10px;
+  background-color: orange;
+  border-radius: 6px;
+}
+
+.carousel button a {
+  color: black;
+}
+
+.carousel button:last-of-type {
+  width: 125px;
+}
 
 /* Menu Cards */
 
@@ -339,12 +366,15 @@ main.no-blur {
   bottom: 18px;
 }
 
-/* Pizza Image by <a href="https://pixabay.com/users/ponce_photography-2473530/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1442946">Aline Ponce</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1442946">Pixabay</a> */
 .menu-cards img {
-  border: dashed;
+  border: solid;
+  border-color: white;
   object-fit: cover;
-  width: 400px;
-  height: 400px;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+  /* max-width: 400px;
+  max-height: 400px; */
 }
 
 .menu-cards {
@@ -357,7 +387,7 @@ main.no-blur {
   padding: 0 25px;
 }
 
-@media (min-width: 641px) {
+@media (min-width: 993px) {
     .menu-cards {
       display: grid;
       grid-template-rows: auto auto;
@@ -367,7 +397,7 @@ main.no-blur {
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 992px) {
   .menu-cards {
     display: grid;
     grid-template-rows: auto auto auto;
@@ -375,10 +405,21 @@ main.no-blur {
   }
 }
 
-@media (max-width: 440px) {
+@media (max-width: 768px) {
   .menu-cards {
-    display: grid;
-    grid-template-rows: auto auto auto auto auto auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+  }
+
+  .menu-cards img, .menu-cards h1 {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 75%;
+    max-height: 75%;
   }
 }
 
@@ -386,110 +427,156 @@ main.no-blur {
 /* Actual Menu */
 
 .menu {
-  border-style: solid none;
-  border-color: var(--navbar-blue);
+  /* border-style: solid none;
+  border-color: var(--navbar-blue); */
+  border-width: 100vw;
   margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* display: grid;
+  grid-template-rows: auto auto auto auto auto auto auto; */
 }
 
 .menu h1 {
   text-align: center;
+  position: relative;
+  top: 30px;
+  padding-bottom: 20px;
 }
 
 .menu div {
   padding: 30px 0;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  /* display: grid;
+  grid-template-columns: 33.3333333% 33.3333333% 33.3333333%; */
 }
 
 .menu div:last-of-type {
   padding-bottom: 55px;
 }
 
+.menu p:first-of-type {
+  position: relative;
+  left: 50px;
+
+  font-size: 25px;
+}
+
 .menu p {
-  padding: 0 25px;
+  justify-content: flex-start;
+  /* padding: 0 25px; */
 }
 
 .menu p:nth-of-type(1)::after {
-  content: "Lorem ipsum dolor sit amet";
+  content: "";
   background-color: yellow;
   font-style: italic;
+
+  font-size: 20px;
 
   position: relative;
   top: 20px;
   left: -35px;
 }
 
+.menu div:first-of-type p:first-of-type::after {
+  content: "Gyros inspired by Greece.";
+}
+
+.menu div:nth-of-type(2) p:first-of-type::after {
+  content: "Your choice of mozzarella cheese, pepperoni, or vegetarian.";
+}
+
+.menu div:nth-of-type(3) p:first-of-type::after {
+  content: "Hamburger, cheeseburger, etc.";
+}
+
+.menu div:nth-of-type(4) p:first-of-type::after {
+  content: "Chicken-fried steak.";
+}
+
+.menu div:nth-of-type(5) p:first-of-type::after {
+  content: "Enjoy the fruits of a bountiful harvest.";
+}
+
+.menu div:nth-of-type(6) p:nth-of-type(1)::after {
+  content: "Delicate frozen treat.";
+}
+
+.menu div:nth-of-type(7) p:first-of-type::after {
+  content: "Coca-Cola, Diet Coke, Pepsi, Diet Pepsi, Sprite, Water, Apple Juice, Orange Juice, Milk, Chocolate Milk, Tea, Coffee.";
+}
+
+
 @media (min-width: 836px) {
 
   .menu p:nth-of-type(2) {
-    font-size: 16px;
+    font-size: 20px;
     position: relative;
     top: 5px;
+    justify-content: center;
+    align-items: center;
   }
 
   .menu p:nth-of-type(2)::before {
-    content: ".........................................................................................................";
+    /* content: "..................................................................................................."; */
+    /* content: "...................................................................."; */
     font-style: italic;
 
     position: absolute;
-    top: 15px;
-    left: -370px;
+    top: 16px;
+    right: 0px;
     z-index: -10;
   }
 }
 
 @media (min-width: 836px) {
-    /* .menu div {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-    } */
-
-    .menu div {
-      display: grid;
-      grid-template-columns: auto auto auto;
-    }
 
     .menu p {
       margin: 0;
       position: relative;
     }
-}
 
-@media (max-width: 835px) {
-  .menu img {
-    display: none;
-  }
+    /* https://www.w3schools.com/css/css3_images.asp */
+    .menu img {
+      position: relative;
+      max-width: 33.33%;
+      max-height: 33.33%;
+    }
 
-  .menu div {
-    display: grid
-    grid-template-columns: auto auto;
-  }
 }
 
 @media (max-width: 835px) {
     .menu div {
-
-      /* display: grid;
-      grid-template-rows: auto auto;
-      grid-template-columns: auto; */
-
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-
-      /* display: grid;
+      display: grid;
       grid-template-rows: auto auto auto auto auto auto auto;
-      grid-template-columns: 50% 50%; */
+      grid-template-columns: 33.33% 33.33% 33.33%;
     }
 
     .menu p {
       padding: 0 10%;
     }
 
+    
+
+    .menu p:nth-of-type(2) {
+      text-align: center;
+    }
+
     .menu {
       width: 75vw;
       transform: translateX(12.5%);
+    }
+
+    .menu img {
+      max-width: 100%;
+      max-height: 100%;
     }
 }
 
@@ -544,10 +631,11 @@ form {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  left: 50%;
+  transform: translateX(-49%);
   height: 850px;
   margin-bottom: 0;
 }
-
 
 form h2 {
   display: block;
@@ -557,6 +645,13 @@ form h2 {
   font-size: 40px;
   top: 30px;
   padding: 0;
+}
+
+form span {
+  position: relative;
+  top: 20px;
+  padding-bottom: 10px;
+  right: 115px;
 }
 
 form p {
@@ -594,6 +689,7 @@ form input {
 
   position: relative;
   bottom: 50px;
+  z-index: 200;
 }
 
 form input:first-of-type {
