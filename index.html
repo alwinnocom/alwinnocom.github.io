@@ -24,87 +24,44 @@
         
         <!-- Pop-up Covid Notice -->
         <header class="covid-notice">
-          <p><strong>COVID-19 Closure: </strong>Note: If this restaurant were real, we would be closed right now to follow the CDC's recommendations for the coronavirus. However, we are currently offering Cascade Catering services to anyone living near Yellowstone. We hope you enjoy our fictional food, and we look forward to your next stay at Yellowstone National Park.</p>
+          <p><strong>COVID-19 Closure: </strong>If this restaurant were real, we would be closed right now to follow the CDC's recommendations for the coronavirus. However, we are currently offering Cascade Catering services to anyone living near Yellowstone. We hope you enjoy our fictional food, and we look forward to your next stay at Yellowstone National Park.</p>
           <i class="covid-close-notice" type="button" name="button"></i>
         </header>
 
         
         <!-- Main content: Carousel, Cards, Menu, Discounts, Form, Disclaimer-Fixed -->
         <main id="main">
-            <div class="carousel">
-                <h1>From Old Faithful to your table.</h1>
-                <p>Enjoy the finest culinary masterpieces at Yellowstone National Park.</p>
-                <img src="tomato.jpg" alt="There should be a tomato here."></img>
+            <div id="home" class="carousel">
+                <div>
+                   <img src="tomato.jpg" alt="There should be a tomato here."></img>
+                </div>
+                
+              
+                <div class="carousel-text">
+                    <h1>From Old Faithful to your table.</h1>
+                    <p>Enjoy the finest culinary masterpieces at Yellowstone National Park.</p>
+                    <div>
+                      <button type="button"><a href=#menu>Sample Our Menu</a></button><button type="button"><a href="#form">Contact Us</a></button>
+                    </div>
+                </div>
+
+                <div>
+                  <img src="yellowstone-national-park-1920x1108.jpg" alt="There should be a Yellowstone Park here."></img>
+                </div>
+                
             </div>
             
             <!-- Menu Cards -->
-            <div id="menu-cards">
-                  <!-- <div class="">
-                    Gyro Geysers
-                  </div>
-                  <div class="">
-                    Cascade Cuisines
-                  </div>
-                  <div class="">
-                    Chicken-Fried Steak
-                  </div>
-                  <div class="">
-                  4
-                  </div>
-                  <div class="">
-                    5
-                  </div>
-                  <div class="">
-                    6
-                  </div> -->
-            </div>
+            <div id="menu-cards"></div>
             
             <!-- Menu -->
-            <div id="menu">
-              
-                
-
-                <!-- <h1>Menu</h1> -->
-
-                <!-- <div class="">
-                      <p>Gyro Geysers</p>
-                      <p>Nutritional value topped with choice condiments and the chef's choice of edible goods.</p>
-                </div>
-                <div class="">
-                      <p>Cascade Cuisines</p>
-                      <p>Ingredients</p>
-                </div>
-                <div class="">
-                      <p>Chicken-Fried Steak</p>
-                      <p>Ingredients</p>
-                 </div>
-                 <div class="">
-                      <p>4</p>
-                      <p>Ingredients</p>
-                 </div>
-                 <div class="">
-                      <p>5</p>
-                      <p>Ingredients</p>
-                 </div>
-                 <div class="">
-                      <p>6</p>
-                      <p>Ingredients</p>
-                 </div>
-                 <div class="">
-                  <p>6</p>
-                  <p>Ingredients</p>
-                 </div>
-                 <div>
-                  <p>Beverages</p>
-                  <p>Coke, Diet Coke, Pepsi, Diet Pepsi, Milk, Chocolate Milk, Apple Juice, Orange Juice, Tea</p>
-                 </div> -->
-
-            </div>
+            <div id="menu"></div>
 
 
             <!-- Form -->
             <form id="form" action="index.html" method="post">
-                    <h2>Contact Us</h2>
+                    <h1>Contact Us</h1>
+                      <span><sup>*</sup> = required</span>
                       <p>Name<sup>*</sup></p>
                         <input placeholder=" John Doe" type="text" name="" value=""></input>
                       <p>Email<sup>*</sup></p>
@@ -124,7 +81,7 @@
       </footer>
 
       <footer class="disclaimer">
-        <button>X</button>
+        <button><span>X</span></button>
         <p><strong>Note: </strong>This is <em>not</em> an actual restaurant. This website only exists so the owner can experiment with Cascading Style Sheets (CSS). Please do not contact Yellowstone National Park about Deluge Delights or any other fictional restaurants you may encounter in the wild. Thank you.</p>
       </footer>
       
