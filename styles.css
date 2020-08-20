@@ -10,55 +10,48 @@
   box-sizing: border-box;
 }
 
-/* main, form, #menu, .menu-cards {
-  width: 100vw;
-} */
-
 /* Body had a pre-built margin of 8px that made the main element unaligned. Pre-built properties are difficult to detect unless you use Google Chrome Dev Tools.*/
 body {
   margin: 0;
 }
 
 :root {
-  /* --waterfall-blue: hsl(230, 50%, 50%); */
-  /* --nature-green: green; */
-
-  --closure-red: #c74715;
+  --border-black: rgba(0,0,0,0.2);
   --disclaimer-wood: rgb(193, 154, 107);
-  --nature-dark-green:	rgb(145, 178, 71);
-  --nature-green:	rgba(145, 178, 71, 0.9);
+  --nature-dark-green:	rgb(79, 97, 39);
+  --nature-green: rgb(145, 178, 71);
+  --nature-transparent-green:	rgba(145, 178, 71, 0.9);
   --nature-light-green: rgba(145, 178, 71, 0.35);
   --waterfall-blue: #169deb;
 }
 
-h1 {
+h1, nav ul li:not(first-of-type), header span {
   font-weight: 70;
   font-family: 'Merienda', cursive;
 }
 
-p, li:not(first-of-type), button, span {
+p, button, span {
   font-family: 'Libre Baskerville', serif;
 }
 
-/* Nature Color Palette (Green) is probably better than the typical Restaurant Palette (red/yellow) in this case, since people visit Yellowstone for nature and not for food. 
+nav ul li:first-of-type, .menu-cards h1, .aligned-menu div:first-of-type p:first-of-type {
+  font-family: "Cookie", cursive;
+}
 
-Blue is not recommended, but it matches with the Old Faithful Geyser + Deluge name. Change name or keep blue.
 
-Color Palettes:
-1. Green/Brown (Nature) or Orange/Yellow (vegetables): https://upserve.com/restaurant-insider/customer-loyalty-and-restaurant-colors/
-2. Earthy Color Scheme (Brown, olive green, beige, umber, dark orange): https://www.webstaurantstore.com/blog/1884/interior-color-choices-and-your-restaurants-message.html 
+/* Color Palettes
+1. Nature Color Palette (Green) is probably better than the typical Restaurant Palette (red/yellow) in this case, since people visit Yellowstone for nature and not for food. 
+2. Blue is not recommended for restaurants, even if it matches with the Old Faithful Geyser + Deluge name.
+3. Green/Brown (Nature) or Orange/Yellow (vegetables): https://upserve.com/restaurant-insider/customer-loyalty-and-restaurant-colors/
+4. Earthy Color Scheme (Brown, olive green, beige, umber, dark orange): https://www.webstaurantstore.com/blog/1884/interior-color-choices-and-your-restaurants-message.html 
+5. Wood = https://rgbcolorcode.com/color/wood-brown#:~:text=The%20hexadecimal%20RGB%20code%20of,component%20(107%2F256).
+6. Nature = https://www.schemecolor.com/nature-natural-colors.php
+7. Random Green = https://www.rapidtables.com/web/color/green-color.html */
 
-Wood = https://rgbcolorcode.com/color/wood-brown#:~:text=The%20hexadecimal%20RGB%20code%20of,component%20(107%2F256).
-Nature = https://www.schemecolor.com/nature-natural-colors.php
-
-Random Green = https://www.rapidtables.com/web/color/green-color.html
-
-*/
-
+/* Responsiveness: Lowest screen size is iPhone 5 at 320px. https://ux.stackexchange.com/questions/53911/what-is-the-smallest-screen-size-you-design-for */
 
 /* Navigation Bar */
 
-/* Alternatively, use var(--nature-green) and change name to Escapade or var(--disclaimer-wood) and Mammoth Morsels */
 .nav-placeholder {
   opacity: 0;
   
@@ -74,9 +67,8 @@ Random Green = https://www.rapidtables.com/web/color/green-color.html
 }
 
 nav {
-  /* background-color: var(--waterfall-blue); */
   background-color: var(--nature-green);
-  /* border-bottom: solid rgba(112, 139, 53, 1); */
+  opacity: 1;
 
   position: fixed;
   display: flex;
@@ -115,7 +107,6 @@ li:first-of-type {
   padding: 0px 15px;
 
   font-size: 33.5px;
-  font-family: 'Cookie', cursive;
   letter-spacing: 1.5px;
 }
 
@@ -161,13 +152,14 @@ li:last-of-type {
 
 @media (max-width: 440px) {
 
-  li:nth-of-type(2), li:nth-of-type(3), li:nth-of-type(4) {
+  li:nth-of-type(2), li:nth-of-type(4), li:nth-of-type(5) {
     display: none;
   }
   
-  li:nth-of-type(5) {
+  li:nth-of-type(3) {
     font-size: 20px;
     padding: 10px;
+    margin-right: 20px;
   }
 
 }
@@ -177,10 +169,8 @@ li:last-of-type {
   li:first-of-type {
     position: absolute;
     visibility: visible;
-    top: 10px;
-    left: 10px;
+    left: 50px;
     padding: 0 15px;
-    font-size: 25px;
   }
 
   li:nth-of-type(2), li:nth-of-type(3), li:nth-of-type(4), li:nth-of-type(5) {
@@ -189,15 +179,16 @@ li:last-of-type {
 
 }
 
+
 /* Covid-Notice */
 
 .covid-notice {
-  animation: appear 0.5s ease-in;
+  animation: appear 1s ease-out;
   animation-delay: 1s;
   animation-fill-mode: forwards;
   opacity: 0;
 
-  background-color: var(--closure-red);
+  background-color: var(--nature-dark-green);
   border-style: groove;
   border-color: none;
   border-radius: 10px;
@@ -207,37 +198,49 @@ li:last-of-type {
 
   position: fixed;
   display: flex;
-  top: 40%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  z-index: 2;
+  top: -950px;
+  width: 100vw;
+  z-index: 102;
 }
 
-@media (max-width: 768px) {
-  .covid-close-notice {
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-  }
+
+header strong, header span {
+  color: white;
+  display: block;
+  opacity: 0.9;
 }
 
 header strong {
-  color: var(--nature-green);
+  border-bottom: 5px dotted white;
+  text-align: center; 
+}
+
+header span { 
+  padding-top: 15px;
+}
+
+header span:first-of-type {
+  text-align: left;
+}
+
+header span:last-of-type {
+  text-align: left;
 }
 
 
 /* Close Covid Notice Button */
-.covid-close-notice {
-  background-color: var(--closure-red);
-  border: none;
+header svg {
+  transform: scale(1.3);
 
   position: absolute;
   top: 0;
-  left: 0;
-  width: 25px;
-  height: 25px;
-  padding: 20px;
-  z-index: -1;
+  left: 4px;
+  height: 48px;
+  font-size: 30px;
+  
+  /* font-style: none;
+  padding: 10px;
+  z-index: -1; */
 }
 
 .covid-close-notice:hover {
@@ -245,21 +248,38 @@ header strong {
 }
 
 .covid-notice.disappear {
-  animation: disappear 0.5s ease-in;
+  animation: disappear 1.5s ease-in;
   animation-fill-mode: forwards;
 }
 
+@media (max-width: 372px) {
+  header span:nth-of-type(2) {
+    display: none;
+  }
+
+  header p {
+    margin-top: 30px;
+  }
+}
 
 /* Blur Content for Covid Notice */
 
-/* @keyframes appear {
+@keyframes appear {
   from {opacity: 0;}
-  to {opacity: 1;}
+  to {
+    opacity: 1;
+    transform: translateY(1000px);
+  }
 }
 
 @keyframes disappear {
-  from {opacity: 1;}
-  to {opacity: 0;}
+  from {opacity: 1;
+        transform: translateY(1000px);
+        }
+  to {
+    transform: translateY(0px);
+    opacity: 0;
+    }
 }
 
 @keyframes blur {
@@ -283,15 +303,14 @@ header strong {
   to {
     filter: blur(0);
     opacity: 1;
-    background-color: none;
   }
-} */
+}
 
 
 /* Main Document */
 
 main {
-  animation: blur 0.5s ease-in;
+  animation: blur 1.5s ease-in;
   animation-delay: 1s;
   animation-fill-mode: forwards;
   width: 100vw;
@@ -318,47 +337,24 @@ main.no-blur {
 
   display: grid;
   grid-auto-rows: auto auto auto auto;
-  /* grid-row-gap: 50px; */
 }
 
-
-/* landing-page */
-
-/* .landing-page {
-  
-  display: grid;
-  grid-template-columns: 33.33% 33.33% 33.33%;
-  padding-bottom: 0;
-
-  background-color: hsl(181, 100%, 97%);
-  
-  
-} */
 
 .landing-page {
   display: block;
   height: 500px;
   margin-bottom: 0;
   padding-bottom: 0;
-
-  
-  
-  /* border-bottom-style: groove; */
 }
 
-/* .landing-page div {
-  height: 100%;
-} */
 
 .landing-page-text {
   position: absolute;
   display: flex;
   flex-direction: column;
-  top: 100px;
+  top: 143px;
   left: 50%;
   transform: translateX(-50%);
-  color: var(--waterfall-blue);
-  
 
   z-index: 2;
 }
@@ -366,17 +362,55 @@ main.no-blur {
 .landing-page-text::after {
   content: '';
   position: absolute;
-  top: 45px;
-  left: 5px;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
   height: 300px;
   width: 100%;
   padding-right: 20px;
 
-  background-color: var(--nature-green);
+  background-color: var(--nature-transparent-green);
   border-radius: 20px;
   opacity: 0.7;
 }
 
+@media (max-width: 780px) {
+
+  .landing-page-text::after {
+    height: 248px;
+  }
+  
+  .landing-page button {
+    display: none;
+  }
+
+}
+
+@media (max-width: 586px) {
+  .landing-page-text {
+    top: 50px;
+  }
+
+  .landing-page-text::after {
+    top: 10px;
+  }
+}
+
+@media (max-width: 462px) {
+  /* .landing-page-text {
+    font-size: 10px;
+    width: 10px;
+  } */
+
+  .landing-page-text p {
+    display: none;
+  }
+
+  .landing-page-text::after {
+    height: 108px;
+  }
+
+}
 .landing-page img {
   position: relative;
   top: 0;
@@ -386,48 +420,17 @@ main.no-blur {
   z-index: -1;
   opacity: 0.8;
   object-fit: cover;
+  min-height: 500px;
 
   /* Auto-resize an Image to Fit a Div  https://www.tutorialrepublic.com/faq/how-to-auto-resize-an-image-to-fit-into-a-div-container-using-css.php#:~:text=Answer%3A%20Use%20the%20CSS%20max,while%20maintaining%20its%20aspect%20ratio. */
   width: 100%;
   display: block;
-
 }
-
-/* .landing-page div img:first-of-type {
-  position: relative;
-  left: 0;
-  margin: 0;
-  padding: 0;
-  z-index: 1;
-  object-fit: cover;
-
-  Auto-resize an Image to Fit a Div  https://www.tutorialrepublic.com/faq/how-to-auto-resize-an-image-to-fit-into-a-div-container-using-css.php#:~:text=Answer%3A%20Use%20the%20CSS%20max,while%20maintaining%20its%20aspect%20ratio.
-  max-width: 100%;
-  max-height: 100%;
-  display: block;
-} */
-
-/* .landing-page img:last-of-type {
-  Flip an image - https://css-tricks.com/snippets/css/flip-an-image/ 
-  position: relative;
-  right: 0;
-  margin: 0;
-  padding: 0;
-  z-index: 1; 
-  height: 350px;
-
-  Image by <a href="https://pixabay.com/users/Engin_Akyurt-3656355/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2776824">Engin Akyurt</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2776824">Pixabay</a> */
-  /* transform: rotateY(180deg);
-  object-fit: cover;
-  /* rotateZ(90deg) 
-} */
-
 
 .landing-page h1, .landing-page p, .landing-page-text div {
   position: relative;
-  top: 30px;
   left: 50%;
-  transform: translateX(-45%);
+  transform: translateX(-50%);
   height: auto;
 
   color: black;
@@ -470,25 +473,41 @@ main.no-blur {
 
 
 
+
 /* Menu Cards */
 
 .menu-cards {
   height: auto;
-  width: 100vw;
-  padding: 20px 0 20px 0;
-  /* background-color: hsl(181, 100%, 87%); */
-  background-color: var(--nature-green);
-  font-family: 'Libre Baskerville', serif;
+  padding: 20px 0;
+}
+
+.menu-cards div:nth-of-type(4), .menu-cards div:nth-of-type(5), .menu-cards div:nth-of-type(6) {
+  background-color: var(--nature-transparent-green);
+}
+
+@media (max-width: 1355px) {
+  .menu-cards {
+    background-color: var(--nature-transparent-green);
+  }
+
+  .landing-page img {
+    height: 500px;
+  }
+
 }
 
 
 .menu-cards h1 {
-  font-size: 25px;
+  font-size: 50px;
   font-weight: 100;
   position: relative;
-  top: 7px;
-  left: 2px;
+  top: 0px;
+  left: 0px;
+  text-align: center;
+  z-index: 0;
+  border-bottom: 5px solid var(--border-black);
 }
+
 
 .menu-cards img {
   border-radius: 15px 15px 15px 15px;
@@ -496,22 +515,38 @@ main.no-blur {
   width: auto;
   max-width: 100%;
   max-height: 100%;
-  margin-top: 15px;
-  /* max-width: 400px;
-  max-height: 400px; */
+  margin: 15px 0 40px 0;
+
+  position: relative;
+  bottom: 0px;
+  left: 0;
+}
+
+.menu-cards div img:hover {
+  border: 3px solid var(--nature-dark-green);
 }
 
 .menu-cards div {
   padding: 0 25px;
 }
 
+@media (min-width: 1355px) {
+  .menu-cards div:nth-of-type(5) img {
+    left: 4px;
+  }
+}
+
 @media (min-width: 993px) {
     .menu-cards {
       display: grid;
       grid-template-rows: auto auto;
-      grid-row-gap: 20px;
 
-      grid-template-columns: 33.33% 33.33% 33.33%;
+      /* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout */
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .menu-cards div:nth-of-type(4) img, .menu-cards div:nth-of-type(5) img, .menu-cards div:nth-of-type(6) img {
+      height: 262.55px;
     }
 }
 
@@ -521,6 +556,10 @@ main.no-blur {
     grid-template-rows: auto auto auto;
     grid-template-columns: 50% 50%;
   }
+
+  .menu-cards img {
+    height: 284.55px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -529,7 +568,6 @@ main.no-blur {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100vw;
   }
 
   .menu-cards img, .menu-cards h1 {
@@ -541,155 +579,180 @@ main.no-blur {
   }
 }
 
-
 /* Actual Menu */
+
+.menu, .menu p {
+  position: relative;
+}
 
 .menu h1 {
   text-align: center;
-  position: relative;
   top: 30px;
-  margin-top: 20px;
-  padding-bottom: 20px;
+  margin: 20px 0;
+}
+
+.aligned-menu {
+  border-top: 5px dotted var(--border-black);
+}
+
+.aligned-menu div {
+  padding-bottom: 10px;
+}
+
+.menu div:nth-of-type(7) {
+  border-bottom: 5px dotted var(--border-black);
 }
 
 .menu div {
-  padding: 30px 0;
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-
-  /* display: grid;
-  grid-template-columns: 33.3333333% 33.3333333% 33.3333333%; */
 }
 
-.menu div:last-of-type {
-  padding-bottom: 55px;
-}
 
-.menu p:first-of-type {
-  position: relative;
-  left: 50px;
-
-  font-size: 25px;
-}
-
-.menu p {
+/* Menu Item Name */
+.aligned-menu div:first-of-type {
+  display: flex;
+  flex-direction: column;
   justify-content: flex-start;
-  /* padding: 0 25px; */
+  align-items: center;
 }
 
-.menu p:nth-of-type(1)::after {
-  content: "";
-  background-color: yellow;
-  font-style: italic;
+.aligned-menu div:first-of-type p:first-of-type {
+  font-size: 40px;
+}
 
+
+/* Menu Item Description */
+.aligned-menu div:first-of-type p:nth-of-type(2) {
   font-size: 20px;
+  text-align: center;
+}
 
+.aligned-menu div:first-of-type div p {
+  left: 0;
+}
+
+.menu-name-description {
+  max-width: 350px;
+}
+
+
+/* Menu Price */
+
+.aligned-menu div:nth-of-type(2) {
+  width: 50px;
+  margin: 0 20px;
+  border-bottom: 5px solid var(--border-black);
+  
+  transform: translateY(-50%);
+}
+
+.aligned-menu div:nth-of-type(2) p {
+  
+  font-size: 20px;
+  
+}
+
+
+/* Menu Pictures */
+
+.aligned-menu div:nth-of-type(3) {
   position: relative;
-  top: 20px;
-  left: -35px;
+  padding: 10px 0;
+  margin: 0;
 }
 
-.menu div:first-of-type p:first-of-type::after {
-  content: "Gyros inspired by Greece.";
+/* https://www.w3schools.com/css/css3_images.asp + https://stackoverflow.com/questions/15769229/how-to-prevent-horizontal-scrolling-on-responsive-webpage*/
+.menu img {
+  position: relative;
+  width: 300px;
+  max-height: 33.33%;
 }
 
-.menu div:nth-of-type(2) p:first-of-type::after {
-  content: "Your choice of mozzarella cheese, pepperoni, or vegetarian.";
-}
-
-.menu div:nth-of-type(3) p:first-of-type::after {
-  content: "Hamburger, cheeseburger, etc.";
-}
-
-.menu div:nth-of-type(4) p:first-of-type::after {
-  content: "Chicken-fried steak.";
-}
-
-.menu div:nth-of-type(5) p:first-of-type::after {
-  content: "Enjoy the fruits of a bountiful harvest.";
-}
-
-.menu div:nth-of-type(6) p:nth-of-type(1)::after {
-  content: "Delicate frozen treat.";
-}
-
-.menu div:nth-of-type(7) p:first-of-type::after {
-  content: "Coca-Cola, Diet Coke, Pepsi, Diet Pepsi, Sprite, Water, Apple Juice, Orange Juice, Milk, Chocolate Milk, Tea, Coffee.";
-}
-
-
-@media (min-width: 836px) {
-
-  .menu p:nth-of-type(2) {
-    font-size: 20px;
-    position: relative;
-    top: 5px;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .menu p:nth-of-type(2)::before {
-    /* content: "..................................................................................................."; */
-    /* content: "...................................................................."; */
-    font-style: italic;
-
-    position: absolute;
-    top: 16px;
-    right: 0px;
-    z-index: -10;
-  }
-}
-
-@media (min-width: 836px) {
-
-    .menu p {
-      margin: 0;
-      position: relative;
-    }
-
-    /* https://www.w3schools.com/css/css3_images.asp */
-    .menu img {
-      position: relative;
-      max-width: 33.33%;
-      max-height: 33.33%;
-    }
-
-}
-
-@media (max-width: 835px) {
-    .menu div {
+@media (max-width: 767px) {
+    .aligned-menu {
       display: grid;
       grid-template-rows: auto auto auto auto auto auto auto;
-      grid-template-columns: 33.33% 33.33% 33.33%;
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .menu p {
-      padding: 0 10%;
+      padding: 0;
     }
 
-    
-
-    .menu p:nth-of-type(2) {
+    .aligned-menu div:first-of-type {
+      padding: 0 10px;
       text-align: center;
     }
 
+    .aligned-menu div:nth-of-type(2) {
+      display: none;
+    }
+
     .menu {
-      width: 75vw;
-      transform: translateX(12.5%);
+      width: 100vw;
     }
 
     .menu img {
       max-width: 100%;
       max-height: 100%;
     }
+
+    .menu div:first-of-type p:nth-of-type(2)::after {
+      content: " | $12 ";
+    }
+
+    .menu div:nth-of-type(2) p:nth-of-type(2)::after {
+      content: " | $9 ";
+    }
+
+    .menu div:nth-of-type(3) p:nth-of-type(2)::after {
+      content: " | $7 ";
+    }
+
+    .menu div:nth-of-type(4) p:nth-of-type(2)::after {
+      content: " | $10 ";
+    }
+
+    .menu div:nth-of-type(5) p:nth-of-type(2)::after {
+      content: " | $4 ";
+    }
+
+    .menu div:nth-of-type(6) p:nth-of-type(2)::after {
+      content: " | $6 ";
+    }
+
+    .menu div:nth-of-type(7) p:nth-of-type(2)::after {
+      content: " | $2.50 ";
+    } 
 }
 
+@media (max-width: 507px) {
+  .menu p {
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .aligned-menu div:nth-of-type(3) {
+    display: none;
+  }
+
+  .menu h1 {
+    font-size: 40px;
+    border-bottom: 5px solid var(--disclaimer-wood);
+  }
+
+  .menu-name-description p:first-of-type {
+    margin-top: 10px;
+  }
+}
 
 /* Form Borders */
-form::before {
+form div:nth-of-type(2)::before {
   content: '';
   position: absolute;
   top: 30px;
@@ -697,16 +760,18 @@ form::before {
   width: 500px;
   z-index: 2;
 
-  /* border: dotted; */
-  box-shadow: 0 0 100px rgba(88, 109, 42, 0.65);
+  box-shadow: 0 0 20px rgba(88, 109, 42, 0.65);
   background-color: var(--nature-light-green);
   border-radius: 20px;
-  /* background-color: none; */
+}
+
+@media (min-width: 992px) {
+
 }
 
 @media (max-width: 600px) {
 
-  form::before{
+  form div:nth-of-type(2)::before{
     content: '';
     position: absolute;
     top: 30px;
@@ -720,7 +785,7 @@ form::before {
 
 @media (max-width: 530px) {
 
-  form::before{
+  form div:nth-of-type(2)::before{
     content: '';
     position: absolute;
     width: 350px;
@@ -731,10 +796,21 @@ form::before {
   
 }
 
+@media (max-width: 415px) {
+
+}
+
 
 /* Actual Form */
 
-form {
+/* form {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+} */
+
+form div:nth-of-type(2) {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -743,6 +819,7 @@ form {
   left: 50%;
   transform: translateX(-49%);
   height: 925px;
+  margin-top: 25px;
   margin-bottom: 0;
   opacity: 1;
   z-index: 50;
@@ -785,13 +862,11 @@ form p:first-of-type, form p:nth-of-type(2) {
 form p:nth-of-type(3) {
   right: 98px;
   top: 40px;
-  /* bottom: 60px; */
 }
 
-form p:last-of-type {
+form p:nth-of-type(4) {
   right: 122px;
   top: 45px;
-  /* bottom: 80px; */
 }
 
 
@@ -804,18 +879,22 @@ form input {
   padding: 0;
 
   position: relative;
+  right: 10px;
   z-index: 200;
 }
 
 form input:first-of-type, form input:nth-of-type(2) {
   top: 20px;
-  right: 10px;
 }
 
 form input:nth-of-type(3) {
   top: 40px;
-  right: 10px;
 }
+
+form input:nth-of-type(3) {
+  top: 40px;
+}
+
 
 form textarea {
   position: relative;
@@ -828,14 +907,14 @@ form textarea {
 form button {
   margin: 20px 0;
   padding: 10px;
-  background-color: var(--nature-green);
-  /* background-color: hsl(230, 56%, 76%); */
-  border-radius: 50px;
-  border: solid;
-  font-weight: 8000;
+  background-color: none;
+  border: 2px solid var(--waterfall-blue);
+  color: var(--waterfall-blue);
+  font-weight: bold;
   position: relative;
   top: 35px;
   transform: translateX(-10%);
+  z-index: 5000;
 }
 
 form sup {
@@ -846,10 +925,9 @@ form sup {
 
 
 /* Fictional Disclaimer */
-.disclaimer {
+.disclaimer, .disclaimer-placeholder {
   /* background-color: tan; */
   background-color: var(--disclaimer-wood);
-  position: fixed;
   bottom: 0;
   left: 0;
   font-size: 20px;
@@ -861,17 +939,20 @@ form sup {
   
 }
 
-.disclaimer-placeholder {
-  opacity: 0;
-  position: relative;
-  bottom: 0;
-  left: 0;
-  font-size: 20px;
+.disclaimer {
+  position: fixed;
+}
 
-  margin: 0;
-  padding: 10px 5px 10px 10px;
-  height: auto;
-  z-index: 51;
+
+.disclaimer-placeholder {
+  position: relative;
+}
+
+@media (max-width: 622px) {
+  .disclaimer, footer svg {
+    display: none;
+  }
+
 }
 
 footer strong {
@@ -885,13 +966,13 @@ footer span {
   opacity: 1;
 }
 
-footer button {
+footer svg {
   position: absolute;
-  top: -22px;
+  top: -33px;
   left: 0px;
   
-  width: 50px;
-  height: 22px;
+  width: 75px;
+  height: 33px;
 
   background-color: var(--disclaimer-wood);
   border: none;
@@ -900,6 +981,6 @@ footer button {
   opacity: 0.7;
 }
 
-footer button:hover {
+footer svg:hover {
   transform: scale(1.1);
 }
