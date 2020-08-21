@@ -13,7 +13,10 @@
 /* Body had a pre-built margin of 8px that made the main element unaligned. Pre-built properties are difficult to detect unless you use Google Chrome Dev Tools.*/
 body {
   margin: 0;
+  overflow-x: hidden;
+  /* https://www.weblimitless.com/stop-website-showing-white-space-right-side/ */
 }
+
 
 :root {
   --border-black: rgba(0,0,0,0.2);
@@ -21,7 +24,7 @@ body {
   --nature-dark-green:	rgb(79, 97, 39);
   --nature-green: rgb(145, 178, 71);
   --nature-transparent-green:	rgba(145, 178, 71, 0.9);
-  --nature-light-green: rgba(145, 178, 71, 0.35);
+  --nature-light-green: rgba(145, 178, 71, 0.65);
   --waterfall-blue: #169deb;
   --waterfall-light-blue: rgb(0, 140, 255);
   --waterfall-lighter-blue: rgba(0, 140, 255, 0.5);
@@ -104,7 +107,6 @@ li {
 
 li:first-of-type {
   position: absolute;
-  top: 5px;
   left: 10px;
   padding: 0px 15px;
 
@@ -191,6 +193,7 @@ li:last-of-type {
   opacity: 0;
 
   background-color: var(--nature-dark-green);
+  /* background-color: var(--waterfall-light-blue); */
   border-style: groove;
   border-color: none;
   border-radius: 10px;
@@ -239,10 +242,6 @@ header svg {
   left: 4px;
   height: 48px;
   font-size: 30px;
-  
-  /* font-style: none;
-  padding: 10px;
-  z-index: -1; */
 }
 
 .covid-close-notice:hover {
@@ -266,7 +265,7 @@ header svg {
 
 /* Blur Content for Covid Notice */
 
-@keyframes appear {
+/* @keyframes appear {
   from {opacity: 0;}
   to {
     opacity: 1;
@@ -306,7 +305,7 @@ header svg {
     filter: blur(0);
     opacity: 1;
   }
-}
+} */
 
 
 /* Main Document */
@@ -325,7 +324,6 @@ main {
 
   display: grid;
   grid-auto-rows: auto auto auto auto;
-  /* grid-row-gap: 50px; */
 }
 
 main.no-blur {
@@ -376,51 +374,6 @@ main.no-blur {
   border-radius: 20px;
   opacity: 0.7;
 }
-
-@media (max-width: 780px) {
-
-  .landing-page-text::after {
-    height: 248px;
-  }
-  
-  .landing-page button {
-    display: none;
-  }
-
-}
-
-@media (max-width: 586px) {
-  .landing-page-text {
-    top: 50px;
-  }
-
-  .landing-page-text::after {
-    top: 10px;
-  }
-}
-
-@media (max-width: 416px) {
-  .landing-page-text h1 {
-    width: 300px;
-    font-size: 14px;
-  }
-
-  .landing-page-text p {
-    display: none;
-  }
-
-  .landing-page-text::after {
-    height: 108px;
-  }
-
-}
-
-@media (max-width: 362px) {
-  .landing-page-text {
-    width: 250px;
-  }
-}
-
 
 .landing-page img {
   position: relative;
@@ -483,7 +436,84 @@ main.no-blur {
 }
 
 
+@media (max-width: 780px) {
+  
+  .landing-page-text {
+    top: 50px;
+  }
 
+  .landing-page-text::after {
+    top: 10px;
+  }
+
+}
+
+@media (max-width: 586px) {
+
+  .landing-page button:first-of-type {
+    left: 0;
+  }
+
+  .landing-page button:last-of-type {
+    right: 0;
+  }
+}
+
+@media (max-width: 440px) {
+  
+  .landing-page h1, .landing-page-text p, .landing-page-text::after {
+    width: 280px;
+    left: 50%;
+  }
+
+  .landing-page h1 {
+    font-size: 32px;
+  }
+
+  .landing-page-text p, .landing-page-text button {
+    font-size: 20px;
+  }
+
+  .landing-page-text::after {
+    height: 258px;
+  }
+
+  .landing-page-text button a {
+    font-size: 16px;
+    padding: 0;
+  }
+
+}
+
+@media (max-width: 360px) {
+  .landing-page h1, .landing-page-text p, .landing-page-text::after {
+    width: 240px;
+  }
+
+  .landing-page h1 {
+    font-size: 26px;
+  }
+
+  .landing-page-text p {
+    font-size: 18px;
+  }
+
+  .landing-page-text::after {
+    height: 195px;
+  }
+
+  .landing-page-text button:last-of-type {
+    width: 100px;
+  }
+
+  .landing-page-text button a {
+    font-size: 14px;
+  }
+
+  .landing-page-text button a:last-of-type {
+    font-size: 13px;
+  }
+}
 
 /* Menu Cards */
 
@@ -493,12 +523,14 @@ main.no-blur {
 }
 
 .menu-cards div:nth-of-type(4), .menu-cards div:nth-of-type(5), .menu-cards div:nth-of-type(6) {
-  background-color: yellow;
+  /* background-color: yellow; */
+  
 }
 
 @media (max-width: 1355px) {
   .menu-cards {
-    background-color: yellow;
+    /* background-color: yellow; */
+    
   }
 
   .landing-page img {
@@ -683,6 +715,8 @@ main.no-blur {
   max-height: 33.33%;
 }
 
+
+
 @media (max-width: 767px) {
     .aligned-menu {
       display: grid;
@@ -757,72 +791,48 @@ main.no-blur {
     border-bottom: 5px solid var(--disclaimer-wood);
   }
 
+  
+
   .menu-name-description p:first-of-type {
     margin-top: 10px;
   }
 }
 
+
 /* Form Borders */
-form div:nth-of-type(2)::before {
+
+form {
+  /* background-color: var(--waterfall-light-blue); */
+  /* background-color: var(--nature-light-green); */
+  /* background-image: radial-gradient(red, blue); */
+
+  /* W3 Schools Background Image - https://www.w3schools.com/cssref/pr_background-image.asp */
+  background-image: url("table-1280px.jpg");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+form div::before {
   content: '';
   position: absolute;
-  top: 30px;
-  height: 850px;
+  top: 50px;
+  height: 830px;
   width: 500px;
   z-index: 2;
 
   box-shadow: 0 0 20px rgba(88, 109, 42, 0.65);
   /* background-color: var(--waterfall-lighter-blue); */
+  /* background-color: white; */
+  /* background-color: var(--nature-transparent-green); */
   background-color: var(--nature-light-green);
   border-radius: 20px;
-}
-
-@media (min-width: 992px) {
-
-}
-
-@media (max-width: 600px) {
-
-  form div:nth-of-type(2)::before{
-    content: '';
-    position: absolute;
-    top: 30px;
-    width: 450px;
-    z-index: 2;
-    
-    box-shadow: 0 0 50px black;
-  }
-  
-}
-
-@media (max-width: 530px) {
-
-  form div:nth-of-type(2)::before{
-    content: '';
-    position: absolute;
-    width: 350px;
-    z-index: 2;
-    
-    box-shadow: 0 0 50px black;
-  }
-  
-}
-
-@media (max-width: 415px) {
-
 }
 
 
 /* Actual Form */
 
-/* form {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-} */
-
-form div:nth-of-type(2) {
+form div {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -935,17 +945,86 @@ form sup {
   font-size: 20px;
 }
 
+@media (max-width: 600px) {
+
+  form div::before{
+    content: '';
+    position: absolute;
+    top: 30px;
+    width: 450px;
+    z-index: 2;
+    
+    box-shadow: 0 0 50px black;
+  }
+  
+}
+
+@media (max-width: 530px) {
+
+  form div::before{
+    content: '';
+    position: absolute;
+    width: 400px;
+    z-index: 2;
+    
+    box-shadow: 0 0 50px black;
+  }
+  
+}
+
+@media (max-width: 450px) {
+
+  form div::before {
+    left: 45%;
+    transform: translateX(-50%);
+    
+    width: 320px;
+  } 
+
+  form input, form textarea {
+    position: relative;
+    width: 250px;
+    right: 20px;
+
+  }
+
+  form h1 {
+    right: 20px;
+  }
+
+  form button {
+    right: 15px;
+  }
+  
+  form p:first-of-type, form p:nth-of-type(2) {
+    right: 114px;
+  }
+  
+  form p:nth-of-type(3) {
+    right: 83px;
+  }
+  
+  form p:nth-of-type(4) {
+    right: 107px;
+  }
+}
+
+@media (max-width: 376px) {
+  form div::before {
+    width: 375px;
+  }
+}
+
 
 /* Fictional Disclaimer */
 .disclaimer, .disclaimer-placeholder {
-  /* background-color: tan; */
   background-color: var(--disclaimer-wood);
   bottom: 0;
   left: 0;
   font-size: 20px;
 
   margin: 0;
-  padding: 10px 5px 10px 10px;
+  padding: 10px 0px 10px 10px;
   height: auto;
   z-index: 51;
   
@@ -958,13 +1037,6 @@ form sup {
 
 .disclaimer-placeholder {
   position: relative;
-}
-
-@media (max-width: 622px) {
-  .disclaimer, footer svg {
-    display: none;
-  }
-
 }
 
 footer strong {
@@ -995,4 +1067,10 @@ footer svg {
 
 footer svg:hover {
   transform: scale(1.1);
+}
+
+@media (max-width: 622px) {
+  .disclaimer, footer svg {
+    display: none;
+  }
 }
