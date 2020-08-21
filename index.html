@@ -24,87 +24,44 @@
         
         <!-- Pop-up Covid Notice -->
         <header class="covid-notice">
-          <p><strong>COVID-19 Closure: </strong>Note: If this restaurant were real, we would be closed right now to follow the CDC's recommendations for the coronavirus. However, we are currently offering Cascade Catering services to anyone living near Yellowstone. We hope you enjoy our fictional food, and we look forward to your next stay at Yellowstone National Park.</p>
-          <i class="covid-close-notice" type="button" name="button"></i>
+          <p><strong>COVID-19 Closure </strong><span>If this restaurant were real, we would be closed right now to follow the CDC's recommendations for the coronavirus. However, we are currently offering Cascade Catering services to anyone living near Yellowstone.</span><span>We look forward to your next stay at Yellowstone National Park.</span></p>
+          
+          <!-- https://tablericons.com/ -->
+          <svg xmlns="http://www.w3.org/2000/svg" class="covid-close-notice icon icon-tabler icon-tabler-square-x" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#8BC34A" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z"/>
+            <rect x="4" y="4" width="16" height="16" rx="2" />
+            <path d="M10 10l4 4m0 -4l-4 4" />
+          </svg>
         </header>
 
         
-        <!-- Main content: Carousel, Cards, Menu, Discounts, Form, Disclaimer-Fixed -->
+        <!-- Main content: Landing page, Cards, Menu, Discounts, Form, Disclaimer-Fixed -->
         <main id="main">
-            <div class="carousel">
+            <div id="home" class="landing-page">
+
+              <!-- Mediterranean Image by <a href="https://pixabay.com/users/lukasbieri-4664461/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2378758">Lukas Bieri</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2378758">Pixabay</a> -->
+
+              <img src="mediterranean-cuisine.jpg" alt="The landing page image is not here."></img>
+
+              <div class="landing-page-text">
                 <h1>From Old Faithful to your table.</h1>
                 <p>Enjoy the finest culinary masterpieces at Yellowstone National Park.</p>
-                <img src="tomato.jpg" alt="There should be a tomato here."></img>
+                <div>
+                  <button type="button"><a href=#menu>Our Menu</a></button><button type="button"><a href="#form">Contact Us</a></button>
+                </div>
+              </div>
             </div>
             
             <!-- Menu Cards -->
-            <div id="menu-cards">
-                  <!-- <div class="">
-                    Gyro Geysers
-                  </div>
-                  <div class="">
-                    Cascade Cuisines
-                  </div>
-                  <div class="">
-                    Chicken-Fried Steak
-                  </div>
-                  <div class="">
-                  4
-                  </div>
-                  <div class="">
-                    5
-                  </div>
-                  <div class="">
-                    6
-                  </div> -->
-            </div>
+            <div id="menu-cards"></div>
             
             <!-- Menu -->
-            <div id="menu">
-              
-                
-
-                <!-- <h1>Menu</h1> -->
-
-                <!-- <div class="">
-                      <p>Gyro Geysers</p>
-                      <p>Nutritional value topped with choice condiments and the chef's choice of edible goods.</p>
-                </div>
-                <div class="">
-                      <p>Cascade Cuisines</p>
-                      <p>Ingredients</p>
-                </div>
-                <div class="">
-                      <p>Chicken-Fried Steak</p>
-                      <p>Ingredients</p>
-                 </div>
-                 <div class="">
-                      <p>4</p>
-                      <p>Ingredients</p>
-                 </div>
-                 <div class="">
-                      <p>5</p>
-                      <p>Ingredients</p>
-                 </div>
-                 <div class="">
-                      <p>6</p>
-                      <p>Ingredients</p>
-                 </div>
-                 <div class="">
-                  <p>6</p>
-                  <p>Ingredients</p>
-                 </div>
-                 <div>
-                  <p>Beverages</p>
-                  <p>Coke, Diet Coke, Pepsi, Diet Pepsi, Milk, Chocolate Milk, Apple Juice, Orange Juice, Tea</p>
-                 </div> -->
-
-            </div>
-
+            <div id="menu"></div>
 
             <!-- Form -->
             <form id="form" action="index.html" method="post">
-                    <h2>Contact Us</h2>
+                  <div>
+                    <h1>Contact Us</h1>
                       <p>Name<sup>*</sup></p>
                         <input placeholder=" John Doe" type="text" name="" value=""></input>
                       <p>Email<sup>*</sup></p>
@@ -114,18 +71,27 @@
                       <p>Message<sup>*</sup></p>
                         <textarea spellcheck="true"></textarea>
                     <button type="button">Submit</button>
+                  </div>
             </form>
 
       </main>
 
       <!-- Disclaimer-Placeholder -->
       <footer class="disclaimer-placeholder">
-        <p><strong>Note: </strong>This is <em>not</em> an actual restaurant. This website only exists so the owner can experiment with Cascading Style Sheets (CSS). Please do not contact Yellowstone National Park about Deluge Delights or any other fictional restaurants you may encounter in the wild. Thank you.</p>
+        <p><strong>Note: </strong>This is <em>not</em> an actual restaurant. This website only exists so the owner (Alwin Nocom) can experiment with Cascading Style Sheets. Please do not contact Yellowstone National Park about Deluge Delights or any other fictional restaurants you may encounter in the wild. Thank you.</p>
       </footer>
 
       <footer class="disclaimer">
-        <button>X</button>
-        <p><strong>Note: </strong>This is <em>not</em> an actual restaurant. This website only exists so the owner can experiment with Cascading Style Sheets (CSS). Please do not contact Yellowstone National Park about Deluge Delights or any other fictional restaurants you may encounter in the wild. Thank you.</p>
+        <!-- https://tablericons.com/ -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-sort-descending" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000000" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path stroke="none" d="M0 0h24v24H0z"/>
+          <line x1="4" y1="6" x2="13" y2="6" />
+          <line x1="4" y1="12" x2="11" y2="12" />
+          <line x1="4" y1="18" x2="11" y2="18" />
+          <polyline points="15 15 18 18 21 15" />
+          <line x1="18" y1="6" x2="18" y2="18" />
+        </svg>
+        <p><strong>Note: </strong>This is <em>not</em> an actual restaurant. This website only exists so the owner (Alwin Nocom) can experiment with Cascading Style Sheets. Please do not contact Yellowstone National Park about Deluge Delights or any other fictional restaurants you may encounter in the wild. Thank you.</p>
       </footer>
       
 
