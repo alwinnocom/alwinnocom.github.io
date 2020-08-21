@@ -1,4 +1,8 @@
-import
+/* Fonts for Restaurants: Libre Baskerville, Merienda, Cookie
+1. https://www.creativebloq.com/inspiration/10-mouth-watering-restaurant-menu-fonts 
+2. https://theprintauthority.com/10-delicious-restaurant-menu-fonts/ */
+
+@import url('https://fonts.googleapis.com/css2?family=Cookie&family=Libre+Baskerville&family=Merienda&display=swap');
 
 * {
   margin: 0;
@@ -9,17 +13,49 @@ import
 /* Body had a pre-built margin of 8px that made the main element unaligned. Pre-built properties are difficult to detect unless you use Google Chrome Dev Tools.*/
 body {
   margin: 0;
+  overflow-x: hidden;
+  /* https://www.weblimitless.com/stop-website-showing-white-space-right-side/ */
 }
+
 
 :root {
-  --navbar-blue: hsl(230, 50%, 50%);
-  --closure-red: hsl(0, 100%, 70%);
+  --border-black: rgba(0,0,0,0.3);
+  --disclaimer-wood: rgb(193, 154, 107);
+  --menu-card: rgba(193, 154, 107, 0.7);
+  --nature-dark-green:	rgb(112, 139, 54);
+  --nature-green: rgb(145, 178, 71);
+  --nature-transparent-green:	rgba(145, 178, 71, 0.9);
+  --nature-light-green: rgba(145, 178, 71, 0.65);
+  --waterfall-blue: #169deb;
+  --waterfall-light-blue: rgb(0, 140, 255);
+  --waterfall-lighter-blue: rgba(0, 140, 255, 0.5);
 }
 
-/* Nature Color Palette (Blue/Green) is probably better than the typical Restaurant Palette (red/yellow) in this case, since people visit Yellowstone for nature and not for food. */
+h1, nav ul li:not(first-of-type), header span {
+  font-weight: 70;
+  font-family: 'Merienda', cursive;
+}
+
+p, button, span {
+  font-family: 'Libre Baskerville', serif;
+}
+
+nav ul li:first-of-type, .menu-cards h1, .aligned-menu div:first-of-type p:first-of-type {
+  font-family: "Cookie", cursive;
+}
 
 
-/* Navbar */
+/* Color Palettes
+1. Nature Color Palette (Green) is probably better than the typical Restaurant Palette (red/yellow) in this case, since people visit Yellowstone for nature and not for food. 
+2. Blue is not recommended for restaurants, even if it matches with the Old Faithful Geyser + Deluge name.
+3. Green/Brown (Nature) or Orange/Yellow (vegetables): https://upserve.com/restaurant-insider/customer-loyalty-and-restaurant-colors/
+4. Earthy Color Scheme (Brown, olive green, beige, umber, dark orange): https://www.webstaurantstore.com/blog/1884/interior-color-choices-and-your-restaurants-message.html 
+5. Wood = https://rgbcolorcode.com/color/wood-brown#:~:text=The%20hexadecimal%20RGB%20code%20of,component%20(107%2F256).
+6. Nature = https://www.schemecolor.com/nature-natural-colors.php
+7. Random Green = https://www.rapidtables.com/web/color/green-color.html */
+
+
+/* Navigation Bar */
 
 .nav-placeholder {
   opacity: 0;
@@ -31,12 +67,14 @@ body {
   align-items: center;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   max-height: 50px;
 }
 
 nav {
-  background-color: var(--navbar-blue);
+  /* background-color: var(--waterfall-light-blue); */
+  background-color: var(--nature-green);
+  opacity: 1;
 
   position: fixed;
   display: flex;
@@ -45,10 +83,10 @@ nav {
   align-items: center;
   top: 0;
   left: 0;
-  width: 100vw;
-  max-height: 50px;
+  width: 100%;
+  height: 50px;
 
-  z-index: 5;
+  z-index: 51;
 }
 
 a {
@@ -70,17 +108,18 @@ li {
 
 li:first-of-type {
   position: absolute;
-  visibility: visible;
-  top: 10px;
   left: 10px;
-  padding: 0 15px;
-  font-size: 25px;
+  padding: 0px 15px;
+
+  font-size: 33.5px;
+  letter-spacing: 1.5px;
 }
 
 li:last-of-type {
   font-size: 20px;
   margin-right: 20px;
 }
+
 
 @media (min-width: 641px) {
 
@@ -118,13 +157,14 @@ li:last-of-type {
 
 @media (max-width: 440px) {
 
-  li:nth-of-type(2), li:nth-of-type(3), li:nth-of-type(4) {
+  li:nth-of-type(2), li:nth-of-type(4), li:nth-of-type(5) {
     display: none;
   }
   
-  li:nth-of-type(5) {
+  li:nth-of-type(3) {
     font-size: 20px;
     padding: 10px;
+    margin-right: 20px;
   }
 
 }
@@ -134,27 +174,25 @@ li:last-of-type {
   li:first-of-type {
     position: absolute;
     visibility: visible;
-    top: 10px;
-    left: 10px;
+    left: 50px;
     padding: 0 15px;
-    font-size: 25px;
   }
 
   li:nth-of-type(2), li:nth-of-type(3), li:nth-of-type(4), li:nth-of-type(5) {
     visibility: hidden;
   }
-
 }
+
 
 /* Covid-Notice */
 
 .covid-notice {
-  animation: appear 0.5s ease-in;
+  animation: appear 1s ease-out;
   animation-delay: 1s;
   animation-fill-mode: forwards;
   opacity: 0;
 
-  background-color: var(--closure-red);
+  background-color: var(--nature-dark-green);
   border-style: groove;
   border-color: none;
   border-radius: 10px;
@@ -164,37 +202,45 @@ li:last-of-type {
 
   position: fixed;
   display: flex;
-  top: 40%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  z-index: 2;
+  top: -950px;
+  width: 100%;
+  z-index: 50;
 }
 
-@media (max-width: 768px) {
-  .covid-close-notice {
-    top: 50%;
-    left: 50%;
-    transform: translateX(-50%) translateY(-50%);
-  }
+
+header strong, header span {
+  color: white;
+  display: block;
+  opacity: 0.9;
 }
 
 header strong {
-  color: blue;
+  border-bottom: 5px dotted white;
+  text-align: center; 
+}
+
+header span { 
+  padding-top: 15px;
+}
+
+header span:first-of-type {
+  text-align: left;
+}
+
+header span:last-of-type {
+  text-align: left;
 }
 
 
 /* Close Covid Notice Button */
-.covid-close-notice {
-  background-color: var(--closure-red);
-  border: none;
+header svg {
+  transform: scale(1.3);
 
   position: absolute;
   top: 0;
-  left: 0;
-  width: 25px;
-  height: 25px;
-  padding: 20px;
-  z-index: -1;
+  left: 4px;
+  height: 48px;
+  font-size: 30px;
 }
 
 .covid-close-notice:hover {
@@ -202,21 +248,38 @@ header strong {
 }
 
 .covid-notice.disappear {
-  animation: disappear 0.5s ease-in;
+  animation: disappear 1.5s ease-in;
   animation-fill-mode: forwards;
 }
 
+@media (max-width: 372px) {
+  header span:nth-of-type(2) {
+    display: none;
+  }
+
+  header p {
+    margin-top: 30px;
+  }
+}
 
 /* Blur Content for Covid Notice */
 
-/* @keyframes appear {
+@keyframes appear {
   from {opacity: 0;}
-  to {opacity: 1;}
+  to {
+    opacity: 1;
+    transform: translateY(1000px);
+  }
 }
 
 @keyframes disappear {
-  from {opacity: 1;}
-  to {opacity: 0;}
+  from {opacity: 1;
+        transform: translateY(1000px);
+        }
+  to {
+    transform: translateY(0px);
+    opacity: 0;
+    }
 }
 
 @keyframes blur {
@@ -226,47 +289,46 @@ header strong {
     background-color: none;
   }
   to {
-    filter: blur(5px);
-    opacity: 0.8;
+    filter: blur(2px);
+    opacity: 0.5;
   }
 }
 
 @keyframes no-blur {
   from {
-    filter: blur(5px);
-    opacity: 0.8;
+    filter: blur(2px);
+    opacity: 0.5;
   }
 
   to {
     filter: blur(0);
     opacity: 1;
-    background-color: none;
   }
-} */
+}
 
 
 /* Main Document */
 
 main {
-  animation: blur 0.5s ease-in;
+  animation: blur 1.5s ease-in;
   animation-delay: 1s;
   animation-fill-mode: forwards;
-  max-width: 100vw;
+  width: 100%;
   height: auto;
   margin: 50px 0 0 0;
   padding: 0;
   position: relative;
   left: 0;
+  top: 0;
 
   display: grid;
   grid-auto-rows: auto auto auto auto;
-  grid-row-gap: 50px;
 }
 
 main.no-blur {
   animation: no-blur 0.5s ease-in;
   animation-fill-mode: forwards;
-  max-width: 100vw;
+  width: 100%;
   margin: 50px 0 0 0;
   padding: 0;
   position: relative;
@@ -274,244 +336,622 @@ main.no-blur {
 
   display: grid;
   grid-auto-rows: auto auto auto auto;
-  grid-row-gap: 40px;
 }
 
 
-/* Carousel */
+.landing-page {
+  display: block;
+  height: 500px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
 
-.carousel {
-  position: relative;
+
+.landing-page-text {
+  position: absolute;
   display: flex;
   flex-direction: column;
-  border-bottom-style: groove;
-  height: 350px;
+  top: 143px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  z-index: 2;
 }
 
-.carousel img {
-  /* Flip an image - https://css-tricks.com/snippets/css/flip-an-image/ */
+.landing-page-text::after {
+  content: '';
   position: absolute;
+  top: 0;
   left: 50%;
+  transform: translateX(-50%);
+  height: 300px;
+  width: 100%;
+  padding-right: 20px;
+
+  /* background-color: var(--waterfall-lighter-blue); */
+  background-color: var(--nature-transparent-green);
+  border-radius: 20px;
+  opacity: 0.7;
+}
+
+.landing-page img {
+  position: relative;
+  top: 0;
+  left: 0;
   margin: 0;
   padding: 0;
   z-index: -1;
-  height: 350px;
-
-  /* Image by <a href="https://pixabay.com/users/Engin_Akyurt-3656355/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2776824">Engin Akyurt</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=2776824">Pixabay</a> */
-}
-
-.carousel img:first-of-type {
-  transform: rotateY(180deg);
+  opacity: 0.8;
   object-fit: cover;
-  /* rotateZ(90deg) */
+  min-height: 500px;
+
+  /* Auto-resize an Image to Fit a Div  https://www.tutorialrepublic.com/faq/how-to-auto-resize-an-image-to-fit-into-a-div-container-using-css.php#:~:text=Answer%3A%20Use%20the%20CSS%20max,while%20maintaining%20its%20aspect%20ratio. */
+  width: 100%;
+  display: block;
 }
 
-
-.carousel h1, .carousel p {
+.landing-page h1, .landing-page p, .landing-page-text div {
   position: relative;
-  top: 150px;
-  left: 25px;
+  left: 50%;
+  transform: translateX(-50%);
   height: auto;
 
   color: black;
   font-weight: 8000;
+  z-index: 3;
 }
 
-.carousel h1 {
-  font-size: 200%;
+.landing-page h1 {
+  font-size: 250%;
   margin: 20px 0 0 0;
-  width: 275px;
+  width: 350px;
 }
 
-.carousel p {
-  font-size: 20px;
-  margin: 10px 0;
-  width: 275px;
+.landing-page p {
+  font-size: 150%;
+  margin: 14px 0;
+  width: 355px;
+}
+
+.landing-page button {
+  margin: 0px 20px 0 0;
+  padding: 5px 10px;
+  background-color: var(--disclaimer-wood);
+  border-radius: 6px;
+
+  position: relative;
+  left: 0%;
+  opacity: 0.8;
+}
+
+.landing-page button a {
+  color: black;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.landing-page button:last-of-type {
+  width: 125px;
+}
+
+
+@media (max-width: 780px) {
+  
+  .landing-page-text {
+    top: 50px;
+  }
+
+  .landing-page-text::after {
+    top: 10px;
+  }
+
+}
+
+@media (max-width: 586px) {
+
+  .landing-page button:first-of-type {
+    left: 0;
+  }
+
+  .landing-page button:last-of-type {
+    right: 0;
+  }
+}
+
+@media (max-width: 440px) {
+  
+  .landing-page h1, .landing-page-text p, .landing-page-text::after {
+    width: 280px;
+    left: 50%;
+  }
+
+  .landing-page h1 {
+    font-size: 32px;
+  }
+
+  .landing-page-text p, .landing-page-text button {
+    font-size: 20px;
+  }
+
+  .landing-page-text::after {
+    height: 258px;
+  }
+
+  .landing-page-text button a {
+    font-size: 16px;
+    padding: 0;
+  }
+
+}
+
+@media (max-width: 360px) {
+  .landing-page h1, .landing-page-text p, .landing-page-text::after {
+    width: 240px;
+  }
+
+  .landing-page h1 {
+    font-size: 26px;
+  }
+
+  .landing-page-text p {
+    font-size: 18px;
+  }
+
+  .landing-page-text::after {
+    height: 195px;
+  }
+
+  .landing-page-text button:last-of-type {
+    width: 100px;
+  }
+
+  .landing-page-text button a {
+    font-size: 14px;
+  }
+
+  .landing-page-text button a:last-of-type {
+    font-size: 13px;
+  }
 }
 
 
 /* Menu Cards */
 
-.menu-cards h1 {
-  font-size: 25px;
-  font-weight: 100;
-  position: relative;
-  bottom: 18px;
-}
-
-/* Pizza Image by <a href="https://pixabay.com/users/ponce_photography-2473530/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1442946">Aline Ponce</a> from <a href="https://pixabay.com/?utm_source=link-attribution&amp;utm_medium=referral&amp;utm_campaign=image&amp;utm_content=1442946">Pixabay</a> */
-.menu-cards img {
-  border: dashed;
-  object-fit: cover;
-  width: 400px;
-  height: 400px;
-}
-
 .menu-cards {
   height: auto;
-  padding-top: 50px;
-  background-color: hsl(181, 100%, 87%);
+  padding: 6px 0;
+}
+
+@media (min-width: 1356px) {
+  .menu-cards div:nth-of-type(4), .menu-cards div:nth-of-type(5), .menu-cards div:nth-of-type(6) {
+    background-color: var(--menu-card);
+  }
+}
+
+@media (max-width: 1355px) {
+  
+  /* .menu-cards div:nth-of-type(4), .menu-cards div:nth-of-type(5), .menu-cards div:nth-of-type(6) {
+    background-color: white;
+  } */
+
+  .menu-cards {
+    background-color: var(--menu-card);
+    padding: 20px 0;
+  } 
+
+  .landing-page img {
+    height: 500px;
+  }
+
+}
+
+
+.menu-cards h1 {
+  font-size: 50px;
+  font-weight: 100;
+  position: relative;
+  top: 0px;
+  left: 0px;
+  text-align: center;
+  z-index: 0;
+  border-bottom: 5px solid var(--border-black);
+}
+
+
+.menu-cards img {
+  border-radius: 15px 15px 15px 15px;
+  object-fit: cover;
+  width: auto;
+  max-width: 100%;
+  max-height: 100%;
+  margin: 15px 0 40px 0;
+
+  position: relative;
+  bottom: 0px;
+  left: 0;
+}
+
+.menu-cards div img:hover {
+  border: 3px solid var(--nature-dark-green);
 }
 
 .menu-cards div {
   padding: 0 25px;
 }
 
-@media (min-width: 641px) {
+@media (min-width: 1355px) {
+  .menu-cards div:nth-of-type(5) img {
+    left: 4px;
+  }
+}
+
+@media (min-width: 993px) {
     .menu-cards {
       display: grid;
       grid-template-rows: auto auto;
-      grid-row-gap: 20px;
 
-      grid-template-columns: 33.33% 33.33% 33.33%;
+      /* https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Basic_Concepts_of_Grid_Layout */
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .menu-cards div:nth-of-type(4) img, .menu-cards div:nth-of-type(5) img, .menu-cards div:nth-of-type(6) img {
+      height: 262.55px;
     }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 992px) {
   .menu-cards {
     display: grid;
     grid-template-rows: auto auto auto;
     grid-template-columns: 50% 50%;
   }
-}
 
-@media (max-width: 440px) {
-  .menu-cards {
-    display: grid;
-    grid-template-rows: auto auto auto auto auto auto;
+  .menu-cards img {
+    height: 284.55px;
   }
 }
 
+@media (max-width: 768px) {
+  .menu-cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .menu-cards img, .menu-cards h1 {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 100%;
+    max-height: 75%;
+  }
+}
+
+@media (max-width: 350px) {
+  .menu-cards img {
+    max-width: 100%;
+    max-height: 50%;
+  }
+}
 
 /* Actual Menu */
 
-.menu {
-  border-style: solid none;
-  border-color: var(--navbar-blue);
-  margin-bottom: 25px;
+.menu, .menu p {
+  position: relative;
 }
 
 .menu h1 {
   text-align: center;
+  top: 30px;
+  padding: 20px 0;
+}
+
+.aligned-menu {
+  border-top: 5px dotted var(--border-black);
+}
+
+.aligned-menu div {
+  padding-bottom: 10px;
+}
+
+.menu div:nth-of-type(7) {
+  border-bottom: 5px dotted var(--border-black);
 }
 
 .menu div {
-  padding: 30px 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.menu div:last-of-type {
-  padding-bottom: 55px;
+
+/* Menu Item Name */
+.aligned-menu div:first-of-type {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 }
 
-.menu p {
-  padding: 0 25px;
+.aligned-menu div:first-of-type p:first-of-type {
+  font-size: 40px;
 }
 
-.menu p:nth-of-type(1)::after {
-  content: "Lorem ipsum dolor sit amet";
-  background-color: yellow;
-  font-style: italic;
 
+/* Menu Item Description */
+.aligned-menu div:first-of-type p:nth-of-type(2) {
+  font-size: 20px;
+  text-align: center;
+}
+
+.aligned-menu div:first-of-type div p {
+  left: 0;
+}
+
+.menu-name-description {
+  max-width: 350px;
+}
+
+
+/* Menu Price */
+
+.aligned-menu div:nth-of-type(2) {
+  width: 50px;
+  margin: 0 20px;
+  border-bottom: 5px solid var(--nature-green);
+  
+  transform: translateY(-50%);
+}
+
+.aligned-menu div:nth-of-type(2) p {
+  font-size: 20px;
+}
+
+
+/* Menu Pictures */
+
+.aligned-menu div:nth-of-type(3) {
   position: relative;
-  top: 20px;
-  left: -35px;
+  padding: 10px 0;
+  margin: 0;
 }
 
-@media (min-width: 836px) {
-
-  .menu p:nth-of-type(2) {
-    font-size: 16px;
-    position: relative;
-    top: 5px;
-  }
-
-  .menu p:nth-of-type(2)::before {
-    content: ".........................................................................................................";
-    font-style: italic;
-
-    position: absolute;
-    top: 15px;
-    left: -370px;
-    z-index: -10;
-  }
+/* https://www.w3schools.com/css/css3_images.asp + https://stackoverflow.com/questions/15769229/how-to-prevent-horizontal-scrolling-on-responsive-webpage*/
+.menu img {
+  position: relative;
+  width: 300px;
+  max-height: 33.33%;
 }
 
-@media (min-width: 836px) {
-    /* .menu div {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-    } */
 
-    .menu div {
+
+@media (max-width: 767px) {
+    .aligned-menu {
       display: grid;
-      grid-template-columns: auto auto auto;
-    }
-
-    .menu p {
-      margin: 0;
-      position: relative;
-    }
-}
-
-@media (max-width: 835px) {
-  .menu img {
-    display: none;
-  }
-
-  .menu div {
-    display: grid
-    grid-template-columns: auto auto;
-  }
-}
-
-@media (max-width: 835px) {
-    .menu div {
-
-      /* display: grid;
-      grid-template-rows: auto auto;
-      grid-template-columns: auto; */
-
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
-
-      /* display: grid;
       grid-template-rows: auto auto auto auto auto auto auto;
-      grid-template-columns: 50% 50%; */
+      grid-template-columns: repeat(2, 1fr);
     }
 
     .menu p {
-      padding: 0 10%;
+      padding: 0;
+    }
+
+    .aligned-menu div:first-of-type {
+      padding: 0 10px;
+      text-align: center;
+    }
+
+    .aligned-menu div:nth-of-type(2) {
+      display: none;
     }
 
     .menu {
-      width: 75vw;
-      transform: translateX(12.5%);
+      width: 100%;
     }
+
+    .menu img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+
+    .menu div:first-of-type p:nth-of-type(2)::after {
+      content: " | $12 ";
+    }
+
+    .menu div:nth-of-type(2) p:nth-of-type(2)::after {
+      content: " | $9 ";
+    }
+
+    .menu div:nth-of-type(3) p:nth-of-type(2)::after {
+      content: " | $7 ";
+    }
+
+    .menu div:nth-of-type(4) p:nth-of-type(2)::after {
+      content: " | $10 ";
+    }
+
+    .menu div:nth-of-type(5) p:nth-of-type(2)::after {
+      content: " | $4 ";
+    }
+
+    .menu div:nth-of-type(6) p:nth-of-type(2)::after {
+      content: " | $6 ";
+    }
+
+    .menu div:nth-of-type(7) p:nth-of-type(2)::after {
+      content: " | $2.50 ";
+    } 
+}
+
+@media (max-width: 507px) {
+  .menu p {
+    padding-bottom: 20px;
+  }
+}
+
+@media (max-width: 380px) {
+  .aligned-menu div:nth-of-type(3) {
+    display: none;
+  }
+
+  .menu h1 {
+    font-size: 40px;
+    border-bottom: 5px solid var(--disclaimer-wood);
+  }
+
+  
+
+  .menu-name-description p:first-of-type {
+    margin-top: 10px;
+  }
 }
 
 
 /* Form Borders */
-form::before {
+
+form {
+  /* W3 Schools Background Image - https://www.w3schools.com/cssref/pr_background-image.asp */
+  background-image: url("table-1280px.jpg");
+  background-position: bottom;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+form div::before {
   content: '';
   position: absolute;
-  top: 30px;
-  height: 750px;
+  top: 50px;
+  height: 830px;
   width: 500px;
   z-index: 2;
 
-  /* border: dotted; */
-  box-shadow: 0 0 100px black;
+  box-shadow: 0 0 20px rgba(88, 109, 42, 0.65);
+  background-color: var(--nature-light-green);
+  border-radius: 20px;
+}
+
+
+/* Actual Form */
+
+form div {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  left: 50%;
+  transform: translateX(-49%);
+  height: 925px;
+  margin-top: 25px;
+  margin-bottom: 0;
+  opacity: 1;
+  z-index: 50;
+}
+
+form h1, form span, form p, form textarea {
+  z-index: 50;
+}
+
+form h1 {
+  display: block;
+  text-align: center;
+
+  position: relative;
+  font-size: 40px;
+  top: 0px;
+  padding: 0;
+}
+
+form span {
+  position: relative;
+  top: 15px;
+  padding-bottom: 10px;
+  right: 115px;
+  font-size: 100%;
+}
+
+
+form p {
+  position: relative;
+  padding: 10px 0;
+}
+
+form p:first-of-type, form p:nth-of-type(2) {
+  right: 129px;
+  top: 20px;
+  margin-top: 7px;
+}
+
+form p:nth-of-type(3) {
+  right: 98px;
+  top: 40px;
+}
+
+form p:nth-of-type(4) {
+  right: 122px;
+  top: 45px;
+}
+
+
+/* Form inputs */
+
+form input {
+  min-height: 30px;
+  max-height: 60px;
+  width: 300px;
+  padding: 0;
+
+  position: relative;
+  right: 10px;
+  z-index: 200;
+}
+
+form input:first-of-type, form input:nth-of-type(2) {
+  top: 20px;
+}
+
+form input:nth-of-type(3) {
+  top: 40px;
+}
+
+form input:nth-of-type(3) {
+  top: 40px;
+}
+
+
+form textarea {
+  position: relative;
+  right: 10px;
+  top: 40px;
+  width: 300px;
+  height: 300px;
+}
+
+form button {
+  margin: 20px 0;
+  padding: 10px;
   background-color: none;
-  opacity: 0.5;
+  border: 2px solid var(--waterfall-blue);
+  color: var(--waterfall-blue);
+  font-weight: bold;
+  position: relative;
+  top: 35px;
+  transform: translateX(-10%);
+  z-index: 5000;
+}
+
+form sup {
+  color: hsl(230, 56%, 36%);
+  font-weight: bold;
+  font-size: 20px;
 }
 
 @media (max-width: 600px) {
 
-  form::before{
+  form div::before{
     content: '';
     position: absolute;
     top: 30px;
@@ -525,10 +965,10 @@ form::before {
 
 @media (max-width: 530px) {
 
-  form::before{
+  form div::before{
     content: '';
     position: absolute;
-    width: 350px;
+    width: 400px;
     z-index: 2;
     
     box-shadow: 0 0 50px black;
@@ -536,165 +976,106 @@ form::before {
   
 }
 
+/* Responsiveness: Lowest screen size is iPhone 5 at 320px. https://ux.stackexchange.com/questions/53911/what-is-the-smallest-screen-size-you-design-for */
+@media (max-width: 450px) {
 
-/* Actual Form */
-form {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 850px;
-  margin-bottom: 0;
+  form div::before {
+    left: 45%;
+    transform: translateX(-50%);
+    
+    width: 320px;
+  } 
+
+  form input, form textarea {
+    position: relative;
+    width: 250px;
+    right: 20px;
+
+  }
+
+  form h1 {
+    right: 20px;
+  }
+
+  form button {
+    right: 15px;
+  }
+  
+  form p:first-of-type, form p:nth-of-type(2) {
+    right: 114px;
+  }
+  
+  form p:nth-of-type(3) {
+    right: 83px;
+  }
+  
+  form p:nth-of-type(4) {
+    right: 107px;
+  }
 }
 
-
-form h2 {
-  display: block;
-  text-align: center;
-
-  position: relative;
-  font-size: 40px;
-  top: 30px;
-  padding: 0;
-}
-
-form p {
-  position: relative;
-  padding: 10px 0;
-}
-
-
-form p:first-of-type, form p:nth-of-type(2) {
-  right: 126px;
-}
-
-form p:nth-of-type(3) {
-  right: 103px;
-  bottom: 50px;
-}
-
-form p:last-of-type {
-  right: 118px;
-  bottom: 80px;
-}
-
-form p:nth-of-type(2) {
-  bottom: 30px;
-}
-
-
-/* Form inputs */
-
-form input {
-  min-height: 30px;
-  max-height: 60px;
-  width: 300px;
-  padding: 0;
-
-  position: relative;
-  bottom: 50px;
-}
-
-form input:first-of-type {
-  bottom: 20px;
-}
-
-form input:nth-of-type(2) {
-  bottom: 50px;
-}
-
-form input:nth-of-type(3) {
-  bottom: 70px;
-}
-
-form textarea {
-  position: relative;
-  bottom: 100px;
-  width: 300px;
-  height: 300px;
-}
-
-/* textarea span {
-  position: absolute;
-  bottom: -10%;
-} */
-
-form input.success {
-  border-color: green;
-}
-
-form input.error {
-  border-color: red;
-}
-
-form button {
-  margin-top: 25px;
-  padding: 10px;
-  background-color: hsl(230, 56%, 76%);
-  border-radius: 50px;
-  border: solid;
-  font-weight: 8000;
-  position: relative;
-  bottom: 100px;
-}
-
-form sup {
-  color: hsl(230, 56%, 36%);
-  font-weight: bold;
-  font-size: 24px;
+@media (max-width: 376px) {
+  form div::before {
+    width: 375px;
+  }
 }
 
 
 /* Fictional Disclaimer */
-.disclaimer {
-  background-color: tan;
-  position: fixed;
+.disclaimer, .disclaimer-placeholder {
+  background-color: var(--disclaimer-wood);
   bottom: 0;
   left: 0;
   font-size: 20px;
 
   margin: 0;
-  padding: 0 5px 0 10px;
+  padding: 10px 0px 10px 10px;
   height: auto;
-  z-index: 3;
+  z-index: 51;
   
 }
 
-.disclaimer-placeholder {
-  opacity: 0;
-  position: relative;
-  bottom: 0;
-  left: 0;
-  font-size: 20px;
+.disclaimer {
+  position: fixed;
+}
 
-  margin: 0;
-  padding: 0 5px 0 10px;
-  height: auto;
-  z-index: 3;
+
+.disclaimer-placeholder {
+  position: relative;
 }
 
 footer strong {
-  color: purple;
+  color: green;
 }
 
-footer button {
+footer span {
+  color: black;
+  font-size: 14px;
+  font-weight: bold;
+  opacity: 1;
+}
+
+footer svg {
   position: absolute;
-  top: -22px;
+  top: -33px;
   left: 0px;
   
-  width: 50px;
-  height: 22px;
+  width: 75px;
+  height: 33px;
 
-  background-color: tan;
+  background-color: var(--disclaimer-wood);
   border: none;
   border-radius: 15px 15px 0 0;
   color: black;
-  font-family: arial;
   opacity: 0.7;
 }
 
-footer button:hover {
+footer svg:hover {
   transform: scale(1.1);
-  color: white;
+}
+
+@media (max-width: 622px) {
+  .disclaimer, footer svg {
+    display: none;
+  }
 }
