@@ -203,17 +203,6 @@
 
       <script>
 
-          // React
-import React from "react";
-import ReactDOM from "react-dom";
-import MenuCards from "./components/MenuCards";
-import Menu from "./components/Menu";
-
-ReactDOM.render(<MenuCards />, document.getElementById("menu-cards"));
-ReactDOM.render(<Menu />, document.getElementById("menu"));
-
-
-// Constant variables
 const button = document.querySelector(".covid-close-notice");
 const covidNotice = document.querySelector(".covid-notice");
 const disclaimer = document.querySelector(".disclaimer");
@@ -222,7 +211,7 @@ const disclaimerPlaceholder = document.querySelector(".disclaimer-placeholder");
 const form = document.getElementById("form");
 const main = document.getElementById("main");
 
-// Remove Covid Notice
+
 button.addEventListener('click', removeBlurAndCovidNotice);
 
 function removeBlurAndCovidNotice() {
@@ -241,16 +230,6 @@ function removeCovidNotice() {
       covidNotice.classList.add("disappear");
     }
 }
-
-
-// Menu Cards
-
-// for (let i=0; i<menuCards.length; i++) {
-//   menuCards[i].addEventListener("hover", () => {menuCards[i].style.top = "3px";})
-// }
-
-
-// Remove Disclaimer
 
 disclaimerButton.addEventListener('click', deleteDisclaimers);
 
