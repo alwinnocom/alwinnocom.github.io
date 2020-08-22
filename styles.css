@@ -192,7 +192,7 @@ li:last-of-type {
   animation-fill-mode: forwards;
   opacity: 0;
 
-  background-color: var(--nature-dark-green);
+  background-color: var(--nature-green);
   border-style: groove;
   border-color: none;
   border-radius: 10px;
